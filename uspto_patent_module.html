@@ -1,0 +1,1697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>USPTO Patent Practitioner Examination – Study Module</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0d2340;
+    --navy-mid: #163556;
+    --navy-light: #1e4a7a;
+    --gold: #c8922a;
+    --gold-light: #e0b05a;
+    --gold-pale: #f9f1e3;
+    --cream: #fdf9f3;
+    --white: #ffffff;
+    --grey-100: #f4f4f4;
+    --grey-200: #e5e5e5;
+    --grey-400: #9ca3af;
+    --grey-600: #4b5563;
+    --grey-800: #1f2937;
+    --red-soft: #7b2e2e;
+    --green-soft: #1e4d2b;
+    --sidebar-w: 280px;
+    --content-max: 860px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--grey-800);
+    line-height: 1.75;
+  }
+
+  /* ─── TOP BAR ─── */
+  .topbar {
+    background: var(--navy);
+    color: #fff;
+    padding: 0 2rem;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    border-bottom: 3px solid var(--gold);
+  }
+  .topbar-brand { font-family: 'EB Garamond', serif; font-size: 1.15rem; font-weight: 600; letter-spacing: .03em; }
+  .topbar-sub { font-size: .75rem; color: var(--gold-light); letter-spacing: .05em; text-transform: uppercase; }
+
+  /* ─── LAYOUT ─── */
+  .layout { display: flex; margin-top: 56px; min-height: calc(100vh - 56px); }
+
+  /* ─── SIDEBAR ─── */
+  .sidebar {
+    width: var(--sidebar-w);
+    min-width: var(--sidebar-w);
+    background: var(--navy-mid);
+    color: #c9d8eb;
+    position: fixed;
+    top: 56px;
+    bottom: 0;
+    overflow-y: auto;
+    font-size: .825rem;
+    scrollbar-width: thin;
+    scrollbar-color: var(--navy-light) transparent;
+  }
+  .sidebar::-webkit-scrollbar { width: 4px; }
+  .sidebar::-webkit-scrollbar-thumb { background: var(--navy-light); border-radius: 2px; }
+
+  .sidebar-section { border-bottom: 1px solid rgba(255,255,255,.08); }
+  .sidebar-heading {
+    padding: .65rem 1.25rem;
+    font-size: .65rem;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: var(--gold-light);
+    font-weight: 600;
+  }
+  .sidebar a {
+    display: block;
+    padding: .55rem 1.25rem .55rem 1.5rem;
+    color: #b0c4de;
+    text-decoration: none;
+    border-left: 3px solid transparent;
+    transition: all .15s;
+    line-height: 1.4;
+  }
+  .sidebar a:hover, .sidebar a.active {
+    background: rgba(200,146,42,.12);
+    color: var(--gold-light);
+    border-left-color: var(--gold);
+  }
+  .sidebar a.active { font-weight: 600; }
+
+  /* ─── MAIN ─── */
+  .main {
+    margin-left: var(--sidebar-w);
+    flex: 1;
+    padding: 2.5rem 3rem 4rem;
+    max-width: calc(var(--content-max) + 6rem);
+  }
+
+  /* ─── PAGES ─── */
+  .page { display: none; }
+  .page.active { display: block; }
+
+  /* ─── TOPIC HEADER ─── */
+  .topic-header {
+    border-bottom: 3px solid var(--gold);
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+  }
+  .topic-meta {
+    font-size: .7rem;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: .35rem;
+  }
+  .topic-title {
+    font-family: 'EB Garamond', serif;
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--navy);
+    line-height: 1.25;
+  }
+  .topic-subtitle { font-size: .9rem; color: var(--grey-600); margin-top: .4rem; }
+
+  /* ─── SECTION HEADINGS ─── */
+  h2 {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.45rem;
+    color: var(--navy);
+    margin: 2.5rem 0 .75rem;
+    padding-bottom: .4rem;
+    border-bottom: 1px solid var(--grey-200);
+  }
+  h3 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--navy-mid);
+    margin: 1.75rem 0 .5rem;
+    letter-spacing: .01em;
+  }
+  h4 {
+    font-size: .9rem;
+    font-weight: 600;
+    color: var(--grey-800);
+    margin: 1.25rem 0 .4rem;
+    text-transform: uppercase;
+    letter-spacing: .07em;
+  }
+
+  p { margin-bottom: 1rem; font-size: .95rem; }
+
+  /* ─── BOXES ─── */
+  .box {
+    border-radius: 6px;
+    padding: 1.25rem 1.5rem;
+    margin: 1.5rem 0;
+    font-size: .9rem;
+  }
+  .box-outcomes { background: var(--navy); color: #e8f0fb; border-left: 4px solid var(--gold); }
+  .box-outcomes h3 { color: var(--gold-light); margin-top: 0; }
+  .box-outcomes li { margin: .4rem 0 .4rem 1.2rem; line-height: 1.6; }
+
+  .box-reading { background: var(--gold-pale); border-left: 4px solid var(--gold); }
+  .box-reading h3 { color: var(--navy); margin-top: 0; }
+  .box-reading .reading-label { font-size: .7rem; text-transform: uppercase; letter-spacing: .08em; font-weight: 600; color: var(--gold); margin: .85rem 0 .3rem; }
+  .box-reading li { margin: .3rem 0 .3rem 1.2rem; font-size: .875rem; line-height: 1.55; }
+  .box-reading .mpep-ref { font-family: 'JetBrains Mono', monospace; font-size: .78rem; background: rgba(200,146,42,.15); padding: .1rem .35rem; border-radius: 3px; color: var(--navy); }
+
+  .box-note { background: #eef3fa; border-left: 4px solid var(--navy-light); color: var(--grey-800); }
+  .box-warn { background: #fdf5e6; border-left: 4px solid var(--gold); }
+  .box-case { background: var(--cream); border: 1px solid var(--grey-200); border-top: 3px solid var(--navy-light); }
+  .box-case .case-name { font-family: 'EB Garamond', serif; font-size: 1.05rem; font-weight: 600; color: var(--navy); }
+  .box-case .case-cite { font-size: .78rem; color: var(--grey-400); font-family: 'JetBrains Mono', monospace; }
+
+  /* ─── STATUTE CALLOUT ─── */
+  .statute {
+    border: 1px solid var(--grey-200);
+    border-left: 4px solid var(--navy);
+    background: var(--white);
+    padding: 1rem 1.25rem;
+    margin: 1.25rem 0;
+    border-radius: 4px;
+    font-size: .875rem;
+  }
+  .statute-label { font-size: .68rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--navy-light); margin-bottom: .4rem; }
+  .statute-text { font-family: 'EB Garamond', serif; font-style: italic; font-size: .95rem; line-height: 1.6; color: var(--grey-800); }
+
+  /* ─── EXAM QUESTION ─── */
+  .exam-q {
+    background: var(--navy);
+    color: #e8f0fb;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 2rem 0;
+  }
+  .exam-q-label { font-size: .68rem; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--gold-light); margin-bottom: .75rem; }
+  .exam-q-text { font-family: 'EB Garamond', serif; font-size: 1.05rem; line-height: 1.65; }
+  .exam-q-choices { margin-top: 1rem; }
+  .exam-q-choice {
+    display: flex;
+    align-items: flex-start;
+    gap: .75rem;
+    padding: .6rem .75rem;
+    border-radius: 5px;
+    margin: .4rem 0;
+    cursor: pointer;
+    border: 1px solid rgba(255,255,255,.15);
+    transition: background .15s;
+    font-size: .88rem;
+    line-height: 1.5;
+  }
+  .exam-q-choice:hover { background: rgba(200,146,42,.18); }
+  .exam-q-choice.correct { background: rgba(30,77,43,.6); border-color: #4ade80; }
+  .exam-q-choice.incorrect { background: rgba(123,46,46,.6); border-color: #f87171; }
+  .exam-q-choice .letter { font-weight: 700; color: var(--gold-light); min-width: 1.2rem; }
+  .exam-feedback {
+    margin-top: 1rem;
+    padding: .9rem 1rem;
+    border-radius: 5px;
+    font-size: .85rem;
+    line-height: 1.6;
+    display: none;
+  }
+  .exam-feedback.show { display: block; }
+  .exam-feedback.correct-fb { background: rgba(30,77,43,.5); border: 1px solid #4ade80; color: #bbf7d0; }
+  .exam-feedback.incorrect-fb { background: rgba(123,46,46,.5); border: 1px solid #f87171; color: #fecaca; }
+  .exam-btn {
+    margin-top: 1rem;
+    background: var(--gold);
+    color: var(--navy);
+    border: none;
+    padding: .55rem 1.4rem;
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: .82rem;
+    cursor: pointer;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+  }
+  .exam-btn:hover { background: var(--gold-light); }
+
+  /* ─── TF ACTIVITY ─── */
+  .tf-activity { margin: 1.5rem 0; }
+  .tf-item {
+    background: var(--white);
+    border: 1px solid var(--grey-200);
+    border-radius: 6px;
+    padding: 1rem 1.25rem;
+    margin: .75rem 0;
+  }
+  .tf-statement { font-size: .9rem; margin-bottom: .75rem; font-weight: 500; }
+  .tf-btns { display: flex; gap: .5rem; }
+  .tf-btn {
+    padding: .4rem 1.1rem;
+    border-radius: 4px;
+    border: 1px solid var(--grey-200);
+    font-size: .82rem;
+    font-weight: 600;
+    cursor: pointer;
+    background: var(--white);
+    color: var(--grey-600);
+    transition: all .15s;
+  }
+  .tf-btn:hover { border-color: var(--navy); color: var(--navy); }
+  .tf-btn.selected-t { background: var(--green-soft); color: #fff; border-color: var(--green-soft); }
+  .tf-btn.selected-f { background: var(--red-soft); color: #fff; border-color: var(--red-soft); }
+  .tf-explanation { font-size: .82rem; color: var(--grey-600); margin-top: .6rem; padding: .6rem .75rem; background: var(--grey-100); border-radius: 4px; display: none; font-style: italic; }
+  .tf-explanation.show { display: block; }
+
+  /* ─── READY CHECKLIST ─── */
+  .ready-box {
+    background: var(--gold-pale);
+    border: 1px solid var(--gold-light);
+    border-radius: 6px;
+    padding: 1.25rem 1.5rem;
+    margin: 2rem 0;
+  }
+  .ready-box h3 { color: var(--navy); margin-top: 0; font-size: .95rem; text-transform: uppercase; letter-spacing: .07em; }
+  .ready-box li { margin: .5rem 0 .5rem 1.2rem; font-size: .88rem; }
+
+  /* ─── TABLE OF CONTENTS ─── */
+  .toc { list-style: none; padding: 0; }
+  .toc li { padding: .3rem 0; border-bottom: 1px solid var(--grey-200); font-size: .88rem; }
+  .toc li a { color: var(--navy-light); text-decoration: none; }
+  .toc li a:hover { color: var(--gold); text-decoration: underline; }
+
+  /* ─── MPEP BADGE ─── */
+  .mpep-badge {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: .72rem;
+    background: var(--navy);
+    color: var(--gold-light);
+    padding: .15rem .5rem;
+    border-radius: 3px;
+    margin-right: .3rem;
+    vertical-align: middle;
+  }
+
+  /* ─── OVERVIEW GRID ─── */
+  .topic-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+  .topic-card {
+    background: var(--white);
+    border: 1px solid var(--grey-200);
+    border-top: 3px solid var(--navy);
+    border-radius: 6px;
+    padding: 1rem;
+    cursor: pointer;
+    transition: all .2s;
+  }
+  .topic-card:hover { border-top-color: var(--gold); box-shadow: 0 4px 12px rgba(0,0,0,.08); transform: translateY(-2px); }
+  .topic-card-num { font-size: .65rem; text-transform: uppercase; letter-spacing: .1em; color: var(--gold); font-weight: 700; }
+  .topic-card-title { font-family: 'EB Garamond', serif; font-size: .95rem; font-weight: 600; color: var(--navy); line-height: 1.3; margin-top: .3rem; }
+  .topic-card-mpep { font-family: 'JetBrains Mono', monospace; font-size: .68rem; color: var(--grey-400); margin-top: .4rem; }
+
+  /* ─── ASSESSMENT BOX ─── */
+  .assessment-info {
+    background: var(--navy);
+    color: #dde7f5;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+  }
+  .assessment-info h3 { color: var(--gold-light); margin-top: 0; }
+  .assessment-info .stat { font-size: 1.8rem; font-family: 'EB Garamond', serif; color: var(--gold); font-weight: 600; }
+  .assessment-info .stat-label { font-size: .78rem; text-transform: uppercase; letter-spacing: .08em; color: var(--grey-400); }
+  .stats-row { display: flex; gap: 2rem; margin: 1rem 0; flex-wrap: wrap; }
+
+  /* ─── SCROLLBAR ─── */
+  .main::-webkit-scrollbar { width: 6px; }
+  .main::-webkit-scrollbar-thumb { background: var(--grey-200); border-radius: 3px; }
+
+  /* ─── DIVIDER ─── */
+  hr { border: none; border-top: 1px solid var(--grey-200); margin: 2rem 0; }
+
+  /* ─── FURTHER READING ─── */
+  .further-reading li { margin: .5rem 0 .5rem 1.2rem; font-size: .875rem; line-height: 1.55; font-style: italic; }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 768px) {
+    .sidebar { display: none; }
+    .main { margin-left: 0; padding: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<nav class="topbar">
+  <div>
+    <div class="topbar-brand">USPTO Patent Practitioner Examination</div>
+    <div class="topbar-sub">Registration Examination Study Module — MPEP 9th Ed. Rev. 01.2024</div>
+  </div>
+  <div style="font-size:.78rem;color:var(--gold-light);">Patent Law (PR3001)</div>
+</nav>
+
+<!-- LAYOUT -->
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-section">
+      <div class="sidebar-heading">Module</div>
+      <a href="#" class="active" onclick="showPage('home',this)">Module Introduction</a>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-heading">Copyright Fundamentals</div>
+      <a href="#" onclick="showPage('t1',this)">Topic 1 – Patent Law &amp; the USPTO System</a>
+      <a href="#" onclick="showPage('t2',this)">Topic 2 – Patentable Subject Matter (§101)</a>
+      <a href="#" onclick="showPage('t3',this)">Topic 3 – Novelty (§102)</a>
+      <a href="#" onclick="showPage('t4',this)">Topic 4 – Non-Obviousness (§103)</a>
+      <a href="#" onclick="showPage('t5',this)">Topic 5 – Written Description &amp; Enablement (§112)</a>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-heading">Prosecution Practice</div>
+      <a href="#" onclick="showPage('t6',this)">Topic 6 – Filing Requirements &amp; Prosecution</a>
+      <a href="#" onclick="showPage('t7',this)">Topic 7 – Claims Drafting &amp; Interpretation</a>
+      <a href="#" onclick="showPage('t8',this)">Topic 8 – Continuation Practice &amp; Amendments</a>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-heading">Advanced Topics</div>
+      <a href="#" onclick="showPage('t9',this)">Topic 9 – PCT &amp; International Filing</a>
+      <a href="#" onclick="showPage('t10',this)">Topic 10 – Post-Grant Proceedings</a>
+      <a href="#" onclick="showPage('t11',this)">Topic 11 – Ethics &amp; Professional Responsibility</a>
+      <a href="#" onclick="showPage('t12',this)">Topic 12 – Patent Prosecution Highway (PPH)</a>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-heading">Resources</div>
+      <a href="#" onclick="showPage('sources',this)">Source Materials &amp; References</a>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="main">
+
+    <!-- ═══════════════════════════════════ HOME ═══════════════════════════════════ -->
+    <div id="page-home" class="page active">
+      <div class="topic-header">
+        <div class="topic-meta">Module Introduction</div>
+        <div class="topic-title">USPTO Patent Practitioner Registration Examination</div>
+        <div class="topic-subtitle">A structured study programme based on MPEP 9th Ed. Rev. 01.2024 and allied source materials</div>
+      </div>
+
+      <h2>1.1 What is the Patent Practitioner Examination?</h2>
+      <p>The USPTO Patent Practitioner Registration Examination — commonly called the "Patent Bar" — is the examination administered by the United States Patent and Trademark Office that qualifies individuals to represent applicants before the USPTO in patent prosecution matters. Passage of the examination is a prerequisite for registration as either a <strong>patent attorney</strong> (who holds a law degree) or a <strong>patent agent</strong> (who does not hold a law degree but possesses the requisite scientific or technical qualifications).</p>
+      <p>The examination is entirely computer-based and administered by Prometric. It consists of <strong>100 multiple-choice questions</strong> presented across two three-hour sessions. To pass, a candidate must answer a minimum of <strong>70 questions correctly</strong>. Candidates have access to an electronic version of the MPEP during the examination.</p>
+
+      <div class="assessment-info">
+        <h3>Examination Format</h3>
+        <div class="stats-row">
+          <div>
+            <div class="stat">100</div>
+            <div class="stat-label">Total Questions</div>
+          </div>
+          <div>
+            <div class="stat">70%</div>
+            <div class="stat-label">Pass Mark</div>
+          </div>
+          <div>
+            <div class="stat">6 hrs</div>
+            <div class="stat-label">Total Time (2 × 3 hr)</div>
+          </div>
+          <div>
+            <div class="stat">MPEP</div>
+            <div class="stat-label">Open Book (Electronic)</div>
+          </div>
+        </div>
+        <p style="font-size:.85rem;color:#b0c4de;margin-bottom:0;">All questions are drawn exclusively from the designated source materials listed in the official USPTO examination specification. Questions test application and interpretation of the rules rather than bare memorisation.</p>
+      </div>
+
+      <h2>1.2 Module Overview</h2>
+      <p>This module provides a systematic programme of study covering all topic areas examined in the USPTO Patent Practitioner Registration Examination effective from <strong>24 September 2025</strong>. The module is structured to mirror the density and approach of a university-level intellectual property law programme, providing explanatory content, statutory references, practice questions, and learning activities for each topic.</p>
+      <p>The module is designed to build competence in three dimensions: (i) understanding the underlying legal rules and policy rationale; (ii) locating and applying the relevant MPEP provisions efficiently during the open-book examination; and (iii) applying those rules accurately to novel fact patterns under time pressure.</p>
+
+      <h2>1.3 Learning Outcomes</h2>
+      <div class="box box-outcomes">
+        <h3>On completion of this module, you should be able to:</h3>
+        <ul>
+          <li>Identify and apply the statutory requirements for patent protection under 35 U.S.C. §§101, 102, 103 and 112</li>
+          <li>Navigate the MPEP efficiently to locate the governing rule for any examination scenario</li>
+          <li>Advise on patent application filing, prosecution and post-grant strategy under USPTO practice</li>
+          <li>Draft and interpret patent claims, including independent, dependent and means-plus-function claims</li>
+          <li>Apply the procedural requirements governing PCT applications and international prosecution</li>
+          <li>Explain the jurisdiction and procedure of the PTAB in inter partes review and post-grant review proceedings</li>
+          <li>Identify ethical obligations under 37 C.F.R. Part 11 and the USPTO Rules of Professional Conduct</li>
+          <li>Apply the procedures and advantages of the Patent Prosecution Highway programmes</li>
+        </ul>
+      </div>
+
+      <h2>1.4 Module Structure</h2>
+      <div class="topic-grid">
+        <div class="topic-card" onclick="showPage('t1', null)">
+          <div class="topic-card-num">Topic 1</div>
+          <div class="topic-card-title">Patent Law &amp; the USPTO System</div>
+          <div class="topic-card-mpep">MPEP Ch. 100–200</div>
+        </div>
+        <div class="topic-card" onclick="showPage('t2', null)">
+          <div class="topic-card-num">Topic 2</div>
+          <div class="topic-card-title">Patentable Subject Matter §101</div>
+          <div class="topic-card-mpep">MPEP § 2100–2107</div>
+        </div>
+        <div class="topic-card" onclick="showPage('t3', null)">
+          <div class="topic-card-num">Topic 3</div>
+          <div class="topic-card-title">Novelty §102</div>
+          <div class="topic-card-mpep">MPEP § 2150–2159</div>
+        </div>
+        <div class="topic-card" onclick="showPage('t4', null)">
+          <div class="topic-card-num">Topic 4</div>
+          <div class="topic-card-title">Non-Obviousness §103</div>
+          <div class="topic-card-mpep">MPEP § 2141–2145</div>
+        </div>
+        <div class="topic-card" onclick="showPage('t5', null)">
+          <div class="topic-card-num">Topic 5</div>
+          <div class="topic-card-title">Written Description &amp; Enablement §112</div>
+          <div class="topic-card-mpep">MPEP § 2161–2175</div>
+        </div>
+        <div class="topic-card" onclick="showPage('t6', null)">
+          <div class="topic-card-num">Topic 6</div>
+          <div class="topic-card-title">Filing Requirements &amp; Prosecution</div>
+          <div class="topic-card-mpep">MPEP § 500–600</div>
+        </div>
+        <div class="topic-card" onclick="showPage('t7', null)">
+          <div class="topic-card-num">Topic 7</div>
+          <div class="topic-card-title">Claims Drafting &amp; Interpretation</div>
+          <div class="topic-card-mpep">MPEP § 608, 2100</div>
+        </div>
+        <div class="topic-card" onclick="showPage('t8', null)">
+          <div class="topic-card-num">Topic 8</div>
+          <div class="topic-card-title">Continuation Practice &amp; Amendments</div>
+          <div class="topic-card-mpep">MPEP § 706–714</div>
+        </div>
+        <div class="topic-card" onclick="showPage('t9', null)">
+          <div class="topic-card-num">Topic 9</div>
+          <div class="topic-card-title">PCT &amp; International Filing</div>
+          <div class="topic-card-mpep">MPEP Ch. 1800</div>
+        </div>
+        <div class="topic-card" onclick="showPage('t10', null)">
+          <div class="topic-card-num">Topic 10</div>
+          <div class="topic-card-title">Post-Grant Proceedings</div>
+          <div class="topic-card-mpep">TPGC; MPEP § 2200</div>
+        </div>
+        <div class="topic-card" onclick="showPage('t11', null)">
+          <div class="topic-card-num">Topic 11</div>
+          <div class="topic-card-title">Ethics &amp; Professional Responsibility</div>
+          <div class="topic-card-mpep">37 C.F.R. Part 11</div>
+        </div>
+        <div class="topic-card" onclick="showPage('t12', null)">
+          <div class="topic-card-num">Topic 12</div>
+          <div class="topic-card-title">Patent Prosecution Highway (PPH)</div>
+          <div class="topic-card-mpep">PPH Pilot Programs</div>
+        </div>
+      </div>
+
+      <h2>1.5 Source Materials (Effective 24 September 2025)</h2>
+      <div class="box box-reading">
+        <div class="reading-label">Primary Source</div>
+        <ul>
+          <li><strong>Manual of Patent Examining Procedure (MPEP)</strong>, Ninth Edition, Revision 01.2024, Published November 2024. The MPEP is the comprehensive reference work governing USPTO practice. All examination questions are anchored in specific MPEP sections.</li>
+        </ul>
+        <div class="reading-label">Supporting Sources</div>
+        <ul>
+          <li><strong>Consolidated Trial Practice Guide</strong>, November 2019. Governs practice before the Patent Trial and Appeal Board (PTAB) in AIA trial proceedings including IPR and PGR.</li>
+          <li><strong>Changes to Representation of Others Before the USPTO Final Rules</strong> (78 Fed. Reg. 20,180, April 3, 2013). Governs the rules of professional conduct and disciplinary proceedings under 37 C.F.R. Part 11.</li>
+          <li><strong>Implementation of the Global and IP5 Patent Prosecution Highway (PPH) Pilot Programs with Participating Offices</strong>. Sets out the procedural requirements for PPH requests and associated documentation.</li>
+        </ul>
+      </div>
+
+      <h2>1.6 Assessment</h2>
+      <p>The Patent Bar examination is a <strong>closed-note</strong> examination with respect to personal notes, but candidates have access to a searchable electronic version of the MPEP via the testing platform. The examination consists of 100 questions (90 scored, 10 unscored pilot questions randomly distributed), all in multiple-choice format with five answer options (A–E). A score of 70 correct answers out of 90 scored questions is required to pass.</p>
+      <p>The examination is administered year-round at Prometric testing centres and remotely via online proctoring. Candidates should consult the USPTO General Requirements Bulletin for current registration and eligibility procedures.</p>
+
+      <h2>1.7 How to Use This Module</h2>
+      <p>Each topic follows a consistent structure: (i) learning outcomes; (ii) required reading with specific MPEP references; (iii) substantive explanatory content; (iv) examination-style practice questions with detailed feedback; (v) true/false activities; and (vi) a "readiness checklist" before proceeding. You should engage with each topic in sequence, consulting the MPEP directly for each referenced section as you work through the content.</p>
+      <div class="box box-note">
+        <strong>Examination Strategy:</strong> Because the MPEP is available during the examination, the primary skill tested is rapid and accurate navigation of the MPEP, combined with the ability to apply rules to novel fact patterns. Do not attempt to memorise the MPEP verbatim. Instead, develop a working knowledge of where to find each rule category, and practise applying rules to unfamiliar scenarios.
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════ TOPIC 1 ═══════════════════════════════════ -->
+    <div id="page-t1" class="page">
+      <div class="topic-header">
+        <div class="topic-meta">Topic 1</div>
+        <div class="topic-title">Patent Law and the USPTO System</div>
+        <div class="topic-subtitle">Foundations of U.S. patent law, the constitutional basis, statutory framework and the USPTO's role</div>
+      </div>
+
+      <div class="box box-outcomes">
+        <h3>Learning Outcomes</h3>
+        <ul>
+          <li>Explain the constitutional and statutory basis for patent protection in the United States</li>
+          <li>Distinguish between the roles of the USPTO, the Federal Circuit and the Supreme Court in patent law development</li>
+          <li>Identify the types of patents (utility, design, plant) and their respective statutory bases</li>
+          <li>Describe the structure and navigational organisation of the MPEP</li>
+          <li>Understand the distinction between patent prosecution and patent litigation</li>
+        </ul>
+      </div>
+
+      <div class="box box-reading">
+        <h3>Topic Reading</h3>
+        <div class="reading-label">Primary MPEP References</div>
+        <ul>
+          <li><span class="mpep-badge">MPEP §100</span> Secrecy, Access, National Security and Foreign Filing</li>
+          <li><span class="mpep-badge">MPEP §200</span> Types and Status of Application; Benefit and Priority Claims</li>
+          <li><span class="mpep-badge">MPEP §1800</span> Patent Cooperation Treaty (Introductory)</li>
+          <li><span class="mpep-badge">35 U.S.C. §1</span> Establishment of the USPTO</li>
+          <li><span class="mpep-badge">35 U.S.C. §101</span> Inventions patentable (introductory)</li>
+          <li><span class="mpep-badge">35 U.S.C. §131</span> Examination of application</li>
+        </ul>
+        <div class="reading-label">Recommended Supplementary Reading</div>
+        <ul>
+          <li>USPTO General Requirements Bulletin (current edition) — registration eligibility requirements</li>
+          <li>Article I, §8, cl. 8 of the U.S. Constitution — the Patent Clause</li>
+        </ul>
+      </div>
+
+      <h2>1.1 The Constitutional Basis for Patent Protection</h2>
+      <p>The authority to grant patents in the United States derives directly from the Constitution. Article I, §8, clause 8 empowers Congress "To promote the Progress of Science and useful Arts, by securing for limited Times to Authors and Inventors the exclusive Right to their respective Writings and Discoveries." This constitutional grant reflects a utilitarian bargain: the inventor receives a time-limited monopoly in exchange for public disclosure of the invention, which enriches the public domain upon expiry.</p>
+
+      <div class="statute">
+        <div class="statute-label">U.S. Constitution, Article I, §8, cl. 8</div>
+        <div class="statute-text">"To promote the Progress of Science and useful Arts, by securing for limited Times to Authors and Inventors the exclusive Right to their respective Writings and Discoveries."</div>
+      </div>
+
+      <p>Congress has exercised this authority principally through Title 35 of the United States Code, which constitutes the Patent Act. The current Patent Act reflects the significant reforms introduced by the <strong>America Invents Act (AIA)</strong> of 2011, which transitioned the United States from a "first-to-invent" system to a "first-inventor-to-file" system — bringing U.S. practice substantially closer to the approach taken by most major patent offices worldwide.</p>
+
+      <h2>1.2 Types of Patent</h2>
+      <h3>Utility Patents (35 U.S.C. §101)</h3>
+      <p>Utility patents are by far the most common form of patent protection. They protect any new and useful process, machine, manufacture or composition of matter, or any new and useful improvement thereof. The term of a utility patent is <strong>20 years from the effective filing date</strong> of the earliest U.S. application to which it claims priority, subject to any applicable patent term adjustments or extensions.</p>
+
+      <h3>Design Patents (35 U.S.C. §171)</h3>
+      <p>Design patents protect the ornamental or aesthetic appearance of an article of manufacture, as distinguished from its functional features. A design patent has a term of <strong>15 years from the date of grant</strong> for applications filed on or after 13 May 2015 (in accordance with the Patent Law Treaties Implementation Act of 2012). Design patents are not subject to maintenance fees.</p>
+
+      <h3>Plant Patents (35 U.S.C. §163)</h3>
+      <p>Plant patents protect distinct and new varieties of asexually reproduced plants (other than tuber-propagated plants or plants found in an uncultivated state). Plant patents have a term of <strong>20 years from the filing date</strong>.</p>
+
+      <div class="box box-note">
+        <strong>Examination Note:</strong> The Patent Bar examination may test distinctions between the three patent types, particularly with respect to term, maintenance fees, and eligible subject matter. Design patents are not subject to §103 obviousness challenges in the same manner as utility patents — the standard is whether the design would have been obvious to a designer of ordinary skill in the art.
+      </div>
+
+      <h2>1.3 The Role of the USPTO</h2>
+      <p>The USPTO is an agency of the U.S. Department of Commerce. It is responsible for examining patent applications and granting patents. The USPTO does not enforce patents — enforcement is a matter for the federal courts. Within the USPTO, the Patent Trial and Appeal Board (PTAB) hears appeals from applicants dissatisfied with an examiner's final rejection, as well as conducting AIA trial proceedings including inter partes review (IPR) and post-grant review (PGR).</p>
+
+      <h2>1.4 The MPEP — Structure and Navigation</h2>
+      <p>The MPEP is organised into chapters numbered 100 through 2900, each covering a discrete area of USPTO practice. For examination purposes, the most heavily tested chapters are:</p>
+      <ul style="margin:.5rem 0 1rem 1.5rem;font-size:.9rem;line-height:1.8;">
+        <li><strong>Chapters 700–900:</strong> Examination procedure, rejections, responses, appeals</li>
+        <li><strong>Chapter 1200:</strong> Appeal to the PTAB</li>
+        <li><strong>Chapter 1800:</strong> PCT applications</li>
+        <li><strong>Chapter 2100:</strong> Patentability (§§101, 102, 103, 112)</li>
+        <li><strong>Chapter 2200:</strong> Reexamination</li>
+      </ul>
+      <p>During the examination, efficient use of the MPEP's search and table-of-contents functions is critical. Practise locating relevant sections from fact pattern triggers before the examination date.</p>
+
+      <!-- EXAM QUESTION -->
+      <div class="exam-q" id="q1-1">
+        <div class="exam-q-label">Practice Examination Question</div>
+        <div class="exam-q-text">Under U.S. patent law, which of the following statements correctly describes the term of a utility patent filed on 1 January 2026 and granted on 1 June 2028, assuming no patent term adjustment applies?</div>
+        <div class="exam-q-choices">
+          <div class="exam-q-choice" onclick="checkQ('q1-1','A','C')"><span class="letter">A.</span> 17 years from the date of grant, expiring 1 June 2045.</div>
+          <div class="exam-q-choice" onclick="checkQ('q1-1','B','C')"><span class="letter">B.</span> 20 years from the date of grant, expiring 1 June 2048.</div>
+          <div class="exam-q-choice" onclick="checkQ('q1-1','C','C')"><span class="letter">C.</span> 20 years from the effective filing date, expiring 1 January 2046.</div>
+          <div class="exam-q-choice" onclick="checkQ('q1-1','D','C')"><span class="letter">D.</span> 20 years from the date of grant, unless the applicant pays maintenance fees, in which case 25 years.</div>
+          <div class="exam-q-choice" onclick="checkQ('q1-1','E','C')"><span class="letter">E.</span> 17 years from the effective filing date, expiring 1 January 2043.</div>
+        </div>
+        <div class="exam-feedback" id="q1-1-fb"></div>
+      </div>
+
+      <!-- TF ACTIVITY -->
+      <h2>Learning Activity — True or False?</h2>
+      <div class="tf-activity">
+        <div class="tf-item">
+          <div class="tf-statement">A design patent filed on 1 March 2026 will, if granted, have a term of 20 years from the filing date.</div>
+          <div class="tf-btns">
+            <button class="tf-btn" onclick="checkTF(this, false, 'Design patents filed on or after 13 May 2015 have a term of 15 years from the date of grant, not 20 years from filing. That term applies to utility and plant patents.')">True</button>
+            <button class="tf-btn" onclick="checkTF(this, true, 'Correct. Design patents filed on or after 13 May 2015 have a term of 15 years from the date of grant — not 20 years from filing, which is the utility patent standard.')">False</button>
+          </div>
+          <div class="tf-explanation"></div>
+        </div>
+        <div class="tf-item">
+          <div class="tf-statement">The USPTO has authority to enforce patents against infringers in federal court proceedings.</div>
+          <div class="tf-btns">
+            <button class="tf-btn" onclick="checkTF(this, false, 'Incorrect. The USPTO examines and grants patents but has no enforcement authority. Patent enforcement is exclusively a matter for the federal courts, typically the U.S. District Courts, with appeals to the Court of Appeals for the Federal Circuit.')">True</button>
+            <button class="tf-btn" onclick="checkTF(this, true, 'Correct. The USPTO only examines and grants patents. Enforcement is a matter for the federal courts. The USPTO plays no role in infringement litigation.')">False</button>
+          </div>
+          <div class="tf-explanation"></div>
+        </div>
+        <div class="tf-item">
+          <div class="tf-statement">The America Invents Act of 2011 converted the U.S. patent system from "first-to-invent" to "first-inventor-to-file".</div>
+          <div class="tf-btns">
+            <button class="tf-btn" onclick="checkTF(this, true, 'Correct. The AIA (Pub. L. 112-29) fundamentally reformed U.S. patent law by adopting a first-inventor-to-file system for applications with an effective filing date on or after 16 March 2013, aligning U.S. practice more closely with international norms.')">True</button>
+            <button class="tf-btn" onclick="checkTF(this, false, 'Incorrect. This statement is true. The AIA did convert the system from first-to-invent to first-inventor-to-file, with effect from 16 March 2013.')">False</button>
+          </div>
+          <div class="tf-explanation"></div>
+        </div>
+      </div>
+
+      <div class="ready-box">
+        <h3>Am I Ready to Move On?</h3>
+        <p style="font-size:.85rem;margin-bottom:.75rem;">Without consulting the MPEP, can you answer the following?</p>
+        <ul>
+          <li>What is the constitutional basis for patent protection in the United States?</li>
+          <li>What are the three types of patent, and how do their terms differ?</li>
+          <li>What is the role of the PTAB, and how does it differ from the role of the federal courts?</li>
+          <li>What major change did the AIA introduce, and on what date did it take effect?</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════ TOPIC 2 ═══════════════════════════════════ -->
+    <div id="page-t2" class="page">
+      <div class="topic-header">
+        <div class="topic-meta">Topic 2</div>
+        <div class="topic-title">Patentable Subject Matter — 35 U.S.C. §101</div>
+        <div class="topic-subtitle">Utility, novelty and subject-matter eligibility; the Alice/Mayo framework and judicial exceptions</div>
+      </div>
+
+      <div class="box box-outcomes">
+        <h3>Learning Outcomes</h3>
+        <ul>
+          <li>State and apply the four categories of patentable subject matter under §101</li>
+          <li>Explain and apply the three judicial exceptions to patent eligibility</li>
+          <li>Apply the Alice/Mayo two-step framework to software, business method and biotechnology claims</li>
+          <li>Distinguish subject-matter eligibility from patentability under §§102, 103 and 112</li>
+          <li>Identify the utility requirement and explain the distinction between specific, substantial and credible utility</li>
+        </ul>
+      </div>
+
+      <div class="box box-reading">
+        <h3>Topic Reading</h3>
+        <div class="reading-label">Primary MPEP References</div>
+        <ul>
+          <li><span class="mpep-badge">MPEP § 2101</span> Statutory Requirements and Examination Guidelines for §101</li>
+          <li><span class="mpep-badge">MPEP § 2104</span> Requirements of 35 U.S.C. 101</li>
+          <li><span class="mpep-badge">MPEP § 2105</span> Patentable Subject Matter — Life Forms</li>
+          <li><span class="mpep-badge">MPEP § 2106</span> Patent Subject Matter Eligibility — Step 2A/2B Analysis</li>
+          <li><span class="mpep-badge">MPEP § 2107</span> Guidelines for Examination of Applications for Compliance with the Utility Requirement</li>
+        </ul>
+        <div class="reading-label">Essential Case Law</div>
+        <ul>
+          <li><em>Alice Corp. v. CLS Bank Int'l</em>, 573 U.S. 208 (2014) — the governing framework for software and business method claims</li>
+          <li><em>Mayo Collaborative Servs. v. Prometheus Labs.</em>, 566 U.S. 66 (2012) — laws of nature</li>
+          <li><em>Association for Molecular Pathology v. Myriad Genetics</em>, 569 U.S. 576 (2013) — isolated DNA sequences</li>
+          <li><em>Diamond v. Chakrabarty</em>, 447 U.S. 303 (1980) — "anything under the sun made by man"</li>
+        </ul>
+      </div>
+
+      <h2>2.1 The Statutory Categories</h2>
+      <p>Section 101 of Title 35 defines the outer boundaries of what may be patented in the United States:</p>
+
+      <div class="statute">
+        <div class="statute-label">35 U.S.C. §101 — Inventions Patentable</div>
+        <div class="statute-text">"Whoever invents or discovers any new and useful process, machine, manufacture, or composition of matter, or any new and useful improvement thereof, may obtain a patent therefor, subject to the conditions and requirements of this title."</div>
+      </div>
+
+      <p>The four statutory categories are:</p>
+      <ul style="margin:.5rem 0 1rem 1.5rem;font-size:.9rem;line-height:1.9;">
+        <li><strong>Process:</strong> A series of steps or acts, including methods and methods of use.</li>
+        <li><strong>Machine:</strong> A concrete thing consisting of parts or of certain devices and combinations of devices (apparatus claims).</li>
+        <li><strong>Manufacture:</strong> An article produced from raw or prepared materials by the giving of new forms, qualities, properties, or combinations.</li>
+        <li><strong>Composition of Matter:</strong> A combination of ingredients, including chemical compounds and mixtures.</li>
+      </ul>
+      <p>In <em>Diamond v. Chakrabarty</em> (1980), the Supreme Court held that the statutory categories should be interpreted broadly: Congress intended patentable subject matter to "include anything under the sun that is made by man." However, this broad interpretation is qualified by three judicially created exceptions.</p>
+
+      <h2>2.2 Judicial Exceptions</h2>
+      <p>The Supreme Court has consistently recognised three categories of subject matter that fall outside the scope of §101, notwithstanding that they might appear to satisfy one of the statutory categories:</p>
+      <h3>Laws of Nature</h3>
+      <p>Naturally occurring physical and chemical principles — such as the relationship between a drug's metabolite concentration and therapeutic effect — cannot be patented. In <em>Mayo v. Prometheus</em>, the Court held that a method claim that merely applied a law of nature with a conventional, obvious additional step was not patentable subject matter.</p>
+      <h3>Natural Phenomena</h3>
+      <p>Naturally occurring phenomena — including isolated naturally occurring DNA sequences (per <em>Myriad Genetics</em>) — are not patentable. However, cDNA (complementary DNA, which is synthetically created and does not occur in nature) may be eligible.</p>
+      <h3>Abstract Ideas</h3>
+      <p>Abstract ideas, including mathematical concepts, certain methods of organising human activity, and mental processes, are not patentable. This exception has proved particularly significant in the context of software and business method patents after <em>Alice Corp.</em></p>
+
+      <h2>2.3 The Alice/Mayo Two-Step Framework (USPTO Step 2A/2B)</h2>
+      <p>The USPTO has codified the Supreme Court's <em>Alice</em>/<em>Mayo</em> framework into a two-step eligibility analysis set out in MPEP §2106:</p>
+      <h3>Step 1: Does the Claim Fall Within a Statutory Category?</h3>
+      <p>If a claim is directed to a process, machine, manufacture or composition of matter, it satisfies Step 1 and examination proceeds. If not, rejection under §101 is appropriate.</p>
+      <h3>Step 2A — Prong 1: Is the Claim Directed to a Judicial Exception?</h3>
+      <p>The examiner determines whether the claim recites a law of nature, natural phenomenon or abstract idea. If not, the claim is eligible. If it does, analysis continues to Prong 2.</p>
+      <h3>Step 2A — Prong 2: Do the Additional Elements Amount to Significantly More?</h3>
+      <p>Even if a claim recites a judicial exception, it may still be eligible if the additional claim elements (beyond the exception itself) integrate the exception into a practical application. If they do, the claim is eligible. If the additional elements amount only to well-understood, routine, conventional activity, the claim fails Step 2A Prong 2 and the analysis moves to Step 2B.</p>
+      <h3>Step 2B: Does the Claim Amount to Significantly More?</h3>
+      <p>Step 2B asks whether any element (individually or in combination) adds a specific limitation beyond the judicial exception that is not well-understood, routine and conventional in the field. If such an element exists, the claim may be eligible despite reciting a judicial exception.</p>
+
+      <div class="box box-case">
+        <div class="case-name">Alice Corp. v. CLS Bank International</div>
+        <div class="case-cite">573 U.S. 208 (2014)</div>
+        <p style="margin-top:.75rem;font-size:.875rem;">The Supreme Court unanimously held that claims directed to the concept of intermediated settlement — a fundamental economic practice — were not patent-eligible under §101. The Court confirmed the two-step framework: (1) determine whether the claim is directed to a judicial exception; (2) if so, consider whether the remaining elements amount to an inventive concept sufficient to ensure the claim is significantly more than a patent on the exception itself. Implementing an abstract idea on a generic computer, without more, does not supply the requisite inventive concept.</p>
+      </div>
+
+      <!-- EXAM QUESTION -->
+      <div class="exam-q" id="q2-1">
+        <div class="exam-q-label">Practice Examination Question</div>
+        <div class="exam-q-text">An applicant claims: "A method of reducing the risk of a blood clot in a patient, comprising: (1) administering a drug to the patient; (2) determining the patient's thrombin level; and (3) based on the thrombin level, deciding whether to administer a second dose." The examiner rejects the claim under 35 U.S.C. §101. Which of the following is the most accurate basis for the rejection?</div>
+        <div class="exam-q-choices">
+          <div class="exam-q-choice" onclick="checkQ('q2-1','A','B')"><span class="letter">A.</span> The claim fails Step 1 because it does not recite a process, machine, manufacture or composition of matter.</div>
+          <div class="exam-q-choice" onclick="checkQ('q2-1','B','B')"><span class="letter">B.</span> The claim is directed to a law of nature (the correlation between thrombin levels and clotting risk), and the additional steps are conventional and insufficient to integrate the exception into a practical application.</div>
+          <div class="exam-q-choice" onclick="checkQ('q2-1','C','B')"><span class="letter">C.</span> The claim is directed to an abstract idea because it involves a mathematical calculation.</div>
+          <div class="exam-q-choice" onclick="checkQ('q2-1','D','B')"><span class="letter">D.</span> The claim lacks utility because the therapeutic outcome is uncertain.</div>
+          <div class="exam-q-choice" onclick="checkQ('q2-1','E','B')"><span class="letter">E.</span> The claim satisfies §101 and the rejection is improper; the examiner should instead reject under §102.</div>
+        </div>
+        <div class="exam-feedback" id="q2-1-fb"></div>
+      </div>
+
+      <div class="ready-box">
+        <h3>Am I Ready to Move On?</h3>
+        <ul>
+          <li>What are the four statutory categories of patentable subject matter under §101?</li>
+          <li>Name the three judicial exceptions and give an example of each.</li>
+          <li>Describe the Alice/Mayo framework as implemented in the USPTO's two-step analysis.</li>
+          <li>How does <em>Myriad Genetics</em> distinguish isolated genomic DNA from cDNA for §101 purposes?</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════ TOPIC 3 ═══════════════════════════════════ -->
+    <div id="page-t3" class="page">
+      <div class="topic-header">
+        <div class="topic-meta">Topic 3</div>
+        <div class="topic-title">Novelty — 35 U.S.C. §102</div>
+        <div class="topic-subtitle">Prior art, anticipation, the AIA prior art framework and the one-year grace period</div>
+      </div>
+
+      <div class="box box-outcomes">
+        <h3>Learning Outcomes</h3>
+        <ul>
+          <li>Apply the AIA §102 prior art framework to determine whether a disclosure is prior art</li>
+          <li>Distinguish pre-AIA and post-AIA §102 and identify which applies to a given application</li>
+          <li>Explain and apply the one-year grace period for inventor-made disclosures under AIA §102(b)(1)</li>
+          <li>Apply the test for anticipation and identify what is required for a prior art reference to anticipate a claim</li>
+          <li>Identify the categories of prior art that are not available under AIA §102(b)(2) (commonly assigned disclosures)</li>
+        </ul>
+      </div>
+
+      <div class="box box-reading">
+        <h3>Topic Reading</h3>
+        <div class="reading-label">Primary MPEP References</div>
+        <ul>
+          <li><span class="mpep-badge">MPEP § 2150</span> Examination Guidelines: 35 U.S.C. 102 (AIA)</li>
+          <li><span class="mpep-badge">MPEP § 2152</span> Prior Art Under AIA 35 U.S.C. 102(a)</li>
+          <li><span class="mpep-badge">MPEP § 2153</span> Exceptions Under AIA 35 U.S.C. 102(b) — Disclosures Made 1 Year or Less Before Filing</li>
+          <li><span class="mpep-badge">MPEP § 2154</span> Exception Under AIA 35 U.S.C. 102(b)(2) — Commonly Owned Disclosures</li>
+          <li><span class="mpep-badge">MPEP § 2131</span> Anticipation — Application of 35 U.S.C. 102</li>
+        </ul>
+      </div>
+
+      <h2>3.1 The AIA Prior Art Framework</h2>
+      <p>The America Invents Act fundamentally restructured the prior art provisions of 35 U.S.C. §102. For applications with an effective filing date on or after <strong>16 March 2013</strong>, the AIA §102 applies. Applications with earlier effective filing dates remain subject to pre-AIA §102.</p>
+
+      <div class="statute">
+        <div class="statute-label">AIA 35 U.S.C. §102(a) — Conditions for Patentability; Novelty</div>
+        <div class="statute-text">"A person shall be entitled to a patent unless — (1) the claimed invention was patented, described in a printed publication, or in public use, on sale, or otherwise available to the public before the effective filing date of the claimed invention; or (2) the claimed invention was described in a patent granted under section 151, or in an application for patent published or deemed published under section 122(b), in which the patent or application, as the case may be, names another inventor and was effectively filed before the effective filing date of the claimed invention."</div>
+      </div>
+
+      <h3>§102(a)(1) — Publicly Available Prior Art</h3>
+      <p>Any disclosure that makes the claimed invention "available to the public" before the effective filing date constitutes prior art under §102(a)(1). This includes patents, printed publications, public use, sales, and any other manner of making the invention publicly available. Notably, the AIA's use of "otherwise available to the public" is intended as a catch-all, and the USPTO and courts have interpreted it broadly.</p>
+
+      <h3>§102(a)(2) — Secret Prior Art: Intervening Patent Applications</h3>
+      <p>Under §102(a)(2), an application or patent naming another inventor and having an earlier effective filing date constitutes prior art even if it was not published until after the applicant's filing date. This so-called "secret prior art" is significant because an applicant cannot know of an earlier-filed, unpublished application by another party.</p>
+
+      <h2>3.2 The Grace Period — §102(b)(1) and §102(b)(2)</h2>
+      <h3>§102(b)(1) — Inventor's Grace Period</h3>
+      <p>A disclosure made <strong>one year or less before the effective filing date</strong> of the claimed invention is not prior art under §102(a)(1) if: (A) the disclosure was made by the inventor or joint inventor, or by others who obtained the subject matter from the inventor; or (B) the subject matter disclosed had, before the disclosure, been publicly disclosed by the inventor or a joint inventor.</p>
+
+      <div class="box box-warn">
+        <strong>Key Examination Trap:</strong> The grace period under §102(b)(1) protects only disclosures <em>by or derived from the inventor</em>. An independent third-party disclosure made within one year of the applicant's filing date is still prior art under §102(a)(1). This is a critical distinction from pre-AIA practice and a frequent examination topic.
+      </div>
+
+      <h3>§102(b)(2) — Commonly Assigned Disclosures</h3>
+      <p>A disclosure that qualifies as prior art under §102(a)(2) (i.e., an earlier-filed application by another inventor) is not prior art if, at the time of the disclosure, the subject matter was owned by or subject to an obligation of assignment to the same person or entity as the claimed invention. This exception facilitates joint research and development activities.</p>
+
+      <h2>3.3 Anticipation</h2>
+      <p>A prior art reference anticipates a claim if every element of the claim is disclosed, either expressly or inherently, in a single prior art reference. This is the "single reference" rule — anticipation cannot be established by combining disclosures from multiple references (that is the province of §103 obviousness).</p>
+
+      <h3>Inherent Disclosure</h3>
+      <p>A claim element is inherently disclosed if it necessarily results from the practice of the prior art reference, even if not explicitly mentioned. The result must be <em>necessarily</em> present, not merely probable or possible: <em>Continental Can Co. v. Monsanto Co.</em>, 948 F.2d 1264 (Fed. Cir. 1991).</p>
+
+      <!-- EXAM QUESTION -->
+      <div class="exam-q" id="q3-1">
+        <div class="exam-q-label">Practice Examination Question</div>
+        <div class="exam-q-text">Inventor A files a patent application on 1 March 2026. Inventor A had disclosed the invention at a public conference on 1 February 2025 — thirteen months before the filing date. A third party, unaware of A's work, independently published a paper describing the same invention on 1 October 2025 — five months before A's filing date. Which of the following is correct under AIA §102?</div>
+        <div class="exam-q-choices">
+          <div class="exam-q-choice" onclick="checkQ('q3-1','A','D')"><span class="letter">A.</span> Neither the conference disclosure nor the third-party publication constitutes prior art because both occurred before A's filing date.</div>
+          <div class="exam-q-choice" onclick="checkQ('q3-1','B','D')"><span class="letter">B.</span> The conference disclosure is prior art under §102(a)(1) but is excused by the §102(b)(1)(A) grace period.</div>
+          <div class="exam-q-choice" onclick="checkQ('q3-1','C','D')"><span class="letter">C.</span> The third-party publication is prior art under §102(a)(1) but is excused by the §102(b)(1)(A) grace period because A made the disclosure first.</div>
+          <div class="exam-q-choice" onclick="checkQ('q3-1','D','D')"><span class="letter">D.</span> The conference disclosure is prior art under §102(a)(1) and is NOT excused because it occurred more than one year before A's filing date. The third-party publication is also prior art under §102(a)(1) and is NOT excused under §102(b)(1) because the grace period protects only inventor-made or inventor-derived disclosures.</div>
+          <div class="exam-q-choice" onclick="checkQ('q3-1','E','D')"><span class="letter">E.</span> Neither disclosure is prior art because neither was made by Inventor A.</div>
+        </div>
+        <div class="exam-feedback" id="q3-1-fb"></div>
+      </div>
+
+      <div class="ready-box">
+        <h3>Am I Ready to Move On?</h3>
+        <ul>
+          <li>What is the effective date threshold that determines whether AIA or pre-AIA §102 applies to an application?</li>
+          <li>What disclosures are excepted from prior art status under §102(b)(1)? Does the exception apply to independent third-party disclosures?</li>
+          <li>What is the "single reference" rule in anticipation, and how does it differ from obviousness under §103?</li>
+          <li>Explain §102(a)(2) "secret prior art" and when the §102(b)(2) commonly-assigned exception applies.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════ TOPIC 4 ═══════════════════════════════════ -->
+    <div id="page-t4" class="page">
+      <div class="topic-header">
+        <div class="topic-meta">Topic 4</div>
+        <div class="topic-title">Non-Obviousness — 35 U.S.C. §103</div>
+        <div class="topic-subtitle">The Graham v. John Deere framework, TSM test, secondary considerations and KSR</div>
+      </div>
+
+      <div class="box box-outcomes">
+        <h3>Learning Outcomes</h3>
+        <ul>
+          <li>Apply the Graham v. John Deere framework for assessing obviousness</li>
+          <li>Explain and apply the TSM (teaching, suggestion or motivation) test and its interaction with KSR</li>
+          <li>Identify and apply the secondary considerations of non-obviousness</li>
+          <li>Distinguish between proper and improper combination of prior art references in an obviousness rejection</li>
+          <li>Identify the person of ordinary skill in the art (POSITA) standard and its role in the §103 analysis</li>
+        </ul>
+      </div>
+
+      <div class="box box-reading">
+        <h3>Topic Reading</h3>
+        <div class="reading-label">Primary MPEP References</div>
+        <ul>
+          <li><span class="mpep-badge">MPEP § 2141</span> Examination Guidelines for Determining Obviousness</li>
+          <li><span class="mpep-badge">MPEP § 2142</span> Legal Concept of Prima Facie Obviousness</li>
+          <li><span class="mpep-badge">MPEP § 2143</span> Examples of Basic Requirements of a Prima Facie Case of Obviousness</li>
+          <li><span class="mpep-badge">MPEP § 2145</span> Consideration of Applicant's Rebuttal Arguments</li>
+          <li><span class="mpep-badge">MPEP § 2144</span> Supporting a Rejection Under 35 U.S.C. 103</li>
+        </ul>
+        <div class="reading-label">Essential Case Law</div>
+        <ul>
+          <li><em>Graham v. John Deere Co.</em>, 383 U.S. 1 (1966) — the foundational four-factor test</li>
+          <li><em>KSR International Co. v. Teleflex Inc.</em>, 550 U.S. 398 (2007) — flexible approach; rejection of rigid TSM test</li>
+        </ul>
+      </div>
+
+      <h2>4.1 The §103 Standard</h2>
+      <div class="statute">
+        <div class="statute-label">35 U.S.C. §103 — Conditions for Patentability; Non-Obvious Subject Matter</div>
+        <div class="statute-text">"A patent for a claimed invention may not be obtained, notwithstanding that the claimed invention is not identically disclosed as set forth in section 102, if the differences between the claimed invention and the prior art are such that the claimed invention as a whole would have been obvious before the effective filing date of the claimed invention to a person having ordinary skill in the pertinent art to which the claimed invention pertains."</div>
+      </div>
+
+      <h2>4.2 The Graham v. John Deere Framework</h2>
+      <p>The Supreme Court in <em>Graham v. John Deere</em> (1966) established the four factual inquiries that must underlie any §103 determination:</p>
+      <ul style="margin:.5rem 0 1rem 1.5rem;font-size:.9rem;line-height:1.9;">
+        <li><strong>(1) Scope and content of the prior art</strong></li>
+        <li><strong>(2) Differences between the prior art and the claims at issue</strong></li>
+        <li><strong>(3) Level of ordinary skill in the pertinent art (POSITA)</strong></li>
+        <li><strong>(4) Secondary considerations</strong> (also called "objective indicia of non-obviousness")</li>
+      </ul>
+      <p>Only after the first three factual inquiries are resolved can the ultimate legal conclusion of obviousness or non-obviousness be reached. Secondary considerations must be considered before the final determination is made.</p>
+
+      <h2>4.3 KSR and the Flexible Approach to Obviousness</h2>
+      <p>Prior to <em>KSR</em> (2007), courts and the USPTO widely applied a rigid teaching-suggestion-motivation (TSM) test, under which a combination of references was obvious only if there was an explicit teaching, suggestion or motivation to combine them in the prior art itself. The Supreme Court in <em>KSR</em> rejected the rigid application of TSM, holding that an obvious combination need not be explicitly taught in the prior art — a POSITA can be assumed to bring creativity, common sense and ordinary experimentation to the analysis.</p>
+      <p>The USPTO's post-<em>KSR</em> guidelines set out a non-exhaustive list of rationales supporting obviousness, codified in MPEP §2143, including: combining prior art elements according to known methods to yield predictable results; substitution of one known element for another; obvious to try where a design choice exists among a finite number of identified, predictable solutions; and motivated by market forces or design needs.</p>
+
+      <h2>4.4 Secondary Considerations</h2>
+      <p>Secondary considerations (objective indicia of non-obviousness) include:</p>
+      <ul style="margin:.5rem 0 1rem 1.5rem;font-size:.9rem;line-height:1.9;">
+        <li>Commercial success of the claimed invention</li>
+        <li>Long-felt but unsolved need in the art</li>
+        <li>Failure of others to solve the problem</li>
+        <li>Unexpected results</li>
+        <li>Copying of the invention by others</li>
+        <li>Industry praise or recognition</li>
+        <li>Licensing of the patent as evidence of commercial value</li>
+      </ul>
+      <p>For secondary considerations to have probative weight, there must be a <strong>nexus</strong> between the evidence and the merits of the claimed invention — i.e., the commercial success or other indicia must be attributable to the invention itself, not to factors such as superior marketing.</p>
+
+      <!-- EXAM QUESTION -->
+      <div class="exam-q" id="q4-1">
+        <div class="exam-q-label">Practice Examination Question</div>
+        <div class="exam-q-text">An examiner is preparing a §103 rejection combining two prior art references. Reference A discloses steps 1 and 2 of the claimed process. Reference B discloses step 3. The examiner's reason for combining is: "a person of ordinary skill would have been motivated to combine References A and B because doing so would have yielded predictable results and the references are in the same field of endeavour." The applicant argues that the combination is improper because neither reference expressly suggests combining them. Under post-KSR USPTO practice, which of the following is correct?</div>
+        <div class="exam-q-choices">
+          <div class="exam-q-choice" onclick="checkQ('q4-1','A','C')"><span class="letter">A.</span> The rejection is improper; post-KSR, the examiner must still identify an express TSM in the prior art itself.</div>
+          <div class="exam-q-choice" onclick="checkQ('q4-1','B','C')"><span class="letter">B.</span> The rejection is improper because the examiner has used hindsight reconstruction by looking backwards from the invention.</div>
+          <div class="exam-q-choice" onclick="checkQ('q4-1','C','C')"><span class="letter">C.</span> The rejection is proper. Post-KSR, an express teaching or suggestion in the prior art is not required; it is sufficient that a POSITA would have had a reason to combine the references with a reasonable expectation of success, which the examiner has articulated.</div>
+          <div class="exam-q-choice" onclick="checkQ('q4-1','D','C')"><span class="letter">D.</span> The rejection is improper unless the examiner also identifies a specific secondary consideration supporting obviousness.</div>
+          <div class="exam-q-choice" onclick="checkQ('q4-1','E','C')"><span class="letter">E.</span> The rejection is proper only if References A and B are in the exact same sub-field of the art.</div>
+        </div>
+        <div class="exam-feedback" id="q4-1-fb"></div>
+      </div>
+
+      <div class="ready-box">
+        <h3>Am I Ready to Move On?</h3>
+        <ul>
+          <li>State the four Graham v. John Deere factual inquiries in order.</li>
+          <li>How did KSR change the approach to the TSM test? What remains valid from the pre-KSR approach?</li>
+          <li>What is the "nexus" requirement for secondary considerations? Why does it matter?</li>
+          <li>What standard of skill applies to the §103 analysis, and who determines it?</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════ TOPIC 5 ═══════════════════════════════════ -->
+    <div id="page-t5" class="page">
+      <div class="topic-header">
+        <div class="topic-meta">Topic 5</div>
+        <div class="topic-title">Written Description, Enablement and Definiteness — 35 U.S.C. §112</div>
+        <div class="topic-subtitle">The specification requirements, means-plus-function claiming and indefiniteness under Nautilus</div>
+      </div>
+
+      <div class="box box-outcomes">
+        <h3>Learning Outcomes</h3>
+        <ul>
+          <li>State and distinguish the written description, enablement and definiteness requirements of §112</li>
+          <li>Apply the written description requirement to determine whether a claim is supported by the specification</li>
+          <li>Explain the Wands factors for assessing undue experimentation in an enablement analysis</li>
+          <li>Apply the Nautilus standard for indefiniteness to claims using terms of degree or functional language</li>
+          <li>Explain means-plus-function claiming under §112(f) and the requirement for a corresponding structure in the specification</li>
+        </ul>
+      </div>
+
+      <div class="box box-reading">
+        <h3>Topic Reading</h3>
+        <div class="reading-label">Primary MPEP References</div>
+        <ul>
+          <li><span class="mpep-badge">MPEP § 2161</span> Written Description Requirement</li>
+          <li><span class="mpep-badge">MPEP § 2164</span> Enablement Requirement</li>
+          <li><span class="mpep-badge">MPEP § 2165</span> The Eight Wands Factors</li>
+          <li><span class="mpep-badge">MPEP § 2173</span> Claims Must be Definite — 35 U.S.C. 112(b)</li>
+          <li><span class="mpep-badge">MPEP § 2181</span> Means-Plus-Function Claim Limitations</li>
+        </ul>
+        <div class="reading-label">Essential Case Law</div>
+        <ul>
+          <li><em>Nautilus, Inc. v. Biosig Instruments, Inc.</em>, 572 U.S. 898 (2014) — the "reasonable certainty" standard for definiteness</li>
+          <li><em>In re Wands</em>, 858 F.2d 731 (Fed. Cir. 1988) — the eight-factor enablement test</li>
+        </ul>
+      </div>
+
+      <h2>5.1 The Written Description Requirement — §112(a)</h2>
+      <p>Section 112(a) requires that the specification contain "a written description of the invention." The written description requirement is separate from enablement: a specification may enable a claim (i.e., tell a skilled person how to make and use the invention) without adequately describing the claimed invention as the applicant's own. The test is whether the disclosure <em>reasonably conveys</em> to those skilled in the art that the inventor had possession of the claimed subject matter as of the filing date.</p>
+
+      <h2>5.2 Enablement — §112(a)</h2>
+      <p>The specification must enable a person of ordinary skill in the art to make and use the invention without undue experimentation. Whether undue experimentation would be required is assessed using the <em>In re Wands</em> eight-factor test:</p>
+      <ul style="margin:.5rem 0 1rem 1.5rem;font-size:.9rem;line-height:1.9;">
+        <li>(1) The breadth of the claims</li>
+        <li>(2) The nature of the invention</li>
+        <li>(3) The state of the prior art</li>
+        <li>(4) The level of one of ordinary skill in the art</li>
+        <li>(5) The level of predictability in the art</li>
+        <li>(6) The amount of direction provided by the inventor</li>
+        <li>(7) The existence of working examples</li>
+        <li>(8) The quantity of experimentation needed</li>
+      </ul>
+
+      <h2>5.3 Definiteness — §112(b)</h2>
+      <p>Section 112(b) requires that the claims particularly point out and distinctly claim the subject matter which the inventor regards as the invention. The Supreme Court in <em>Nautilus</em> (2014) held that a claim is indefinite if, when read in light of the specification and the prosecution history, it fails to inform those skilled in the art about the scope of the invention with <strong>reasonable certainty</strong>.</p>
+
+      <h2>5.4 Means-Plus-Function Claiming — §112(f)</h2>
+      <p>Section 112(f) permits a claim element to be expressed as a means or step for performing a specified function without the recital of structure, material or acts in support thereof. Such an element is construed to cover the corresponding structure, material or acts described in the specification and equivalents thereof. If no corresponding structure is disclosed in the specification, the claim is indefinite.</p>
+
+      <div class="box box-warn">
+        <strong>Examination Trap:</strong> A claim element using "means for" or "step for" language invokes §112(f). However, a claim element that recites structure (e.g., "a processor configured to") typically does not invoke §112(f), even if it is written in functional language. The distinction is heavily tested.
+      </div>
+
+      <!-- EXAM QUESTION -->
+      <div class="exam-q" id="q5-1">
+        <div class="exam-q-label">Practice Examination Question</div>
+        <div class="exam-q-text">A patent claim recites "means for detecting a temperature change." The specification describes a thermocouple as the corresponding structure but describes no other structure for performing this function. A competitor's product performs the same detection function using a thermistor. Under 35 U.S.C. §112(f), does the competitor's thermistor infringe the means-plus-function claim?</div>
+        <div class="exam-q-choices">
+          <div class="exam-q-choice" onclick="checkQ('q5-1','A','C')"><span class="letter">A.</span> No. §112(f) claims are construed to cover only the exact corresponding structure disclosed in the specification — the thermocouple — and nothing else.</div>
+          <div class="exam-q-choice" onclick="checkQ('q5-1','B','C')"><span class="letter">B.</span> Yes. Any device capable of detecting a temperature change is covered because §112(f) claims are construed functionally without limitation to specific structures.</div>
+          <div class="exam-q-choice" onclick="checkQ('q5-1','C','C')"><span class="letter">C.</span> Possibly. §112(f) claims cover the corresponding structure (thermocouple) and its equivalents. Whether a thermistor is an equivalent to a thermocouple is a factual question depending on whether it performs substantially the same function in substantially the same way to achieve substantially the same result.</div>
+          <div class="exam-q-choice" onclick="checkQ('q5-1','D','C')"><span class="letter">D.</span> No. §112(f) claims are not infringed by a product that uses a structurally distinct device, regardless of functional equivalence.</div>
+          <div class="exam-q-choice" onclick="checkQ('q5-1','E','C')"><span class="letter">E.</span> The claim is invalid because the specification only discloses one corresponding structure, which is insufficient under §112(f).</div>
+        </div>
+        <div class="exam-feedback" id="q5-1-fb"></div>
+      </div>
+
+      <div class="ready-box">
+        <h3>Am I Ready to Move On?</h3>
+        <ul>
+          <li>How does the written description requirement differ from enablement? Can a specification enable without describing?</li>
+          <li>List the eight Wands factors and explain which are most significant in a biotechnology context.</li>
+          <li>What is the Nautilus "reasonable certainty" standard, and how does it differ from the pre-Nautilus approach?</li>
+          <li>Under §112(f), what does a means-plus-function claim cover, and what is the consequence if no corresponding structure is disclosed?</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════ TOPIC 6 ═══════════════════════════════════ -->
+    <div id="page-t6" class="page">
+      <div class="topic-header">
+        <div class="topic-meta">Topic 6</div>
+        <div class="topic-title">Patent Application Filing Requirements and Prosecution</div>
+        <div class="topic-subtitle">Parts of the application, filing dates, examination procedures, Office Actions and responses</div>
+      </div>
+
+      <div class="box box-outcomes">
+        <h3>Learning Outcomes</h3>
+        <ul>
+          <li>Identify the components required to obtain a filing date for a patent application</li>
+          <li>Explain the examination process from filing through final disposition</li>
+          <li>Distinguish between a non-final and final Office Action and identify the appropriate responses to each</li>
+          <li>Apply the rules governing response periods, extensions of time and the consequences of abandonment</li>
+          <li>Explain the interview practice and pre-appeal brief conference procedure</li>
+        </ul>
+      </div>
+
+      <div class="box box-reading">
+        <h3>Topic Reading</h3>
+        <div class="reading-label">Primary MPEP References</div>
+        <ul>
+          <li><span class="mpep-badge">MPEP § 506</span> Filing Date of Application; Completion of Application</li>
+          <li><span class="mpep-badge">MPEP § 707</span> Office Actions</li>
+          <li><span class="mpep-badge">MPEP § 710</span> Time Periods</li>
+          <li><span class="mpep-badge">MPEP § 714</span> Amplification and Correction of Record</li>
+          <li><span class="mpep-badge">MPEP § 715</span> Swearing Behind a Reference</li>
+          <li><span class="mpep-badge">MPEP § 819</span> Interviews</li>
+        </ul>
+      </div>
+
+      <h2>6.1 Components Required for a Filing Date</h2>
+      <p>Under 37 C.F.R. §1.53, a filing date will be accorded to a patent application upon receipt of a specification (which must include at least one claim for non-provisional applications) and any required drawing. The filing fee is <em>not</em> required to obtain a filing date, although a notice to file missing parts will be sent if fees are outstanding.</p>
+
+      <div class="box box-note">
+        <strong>Key Rule:</strong> For utility and plant applications filed on or after 16 December 2012, a filing date can be obtained with just the specification (including at least one claim). Drawings are required if they are necessary for understanding the invention, but a filing date is not withheld simply because drawings are missing — a notice is sent and the applicant has time to supply them.
+      </div>
+
+      <h2>6.2 Non-Final and Final Office Actions</h2>
+      <h3>Non-Final Office Action</h3>
+      <p>A non-final Office Action sets forth the examiner's rejections and objections for the first time (or after certain amendments reopen prosecution). The applicant has a period of <strong>three months</strong> (shortened statutory period) to respond as a matter of right, extendable up to six months by paying extension fees. The applicant may respond by amending claims, submitting arguments, or both.</p>
+
+      <h3>Final Office Action</h3>
+      <p>After the applicant's first response, the examiner may issue a final Office Action. A final rejection is not necessarily the last step — the applicant may: (i) file a continued prosecution application (CPA, for designs only after the AIPA), (ii) file a Request for Continued Examination (RCE), (iii) file a continuation application, or (iv) appeal to the PTAB.</p>
+
+      <h2>6.3 Response Periods and Abandonment</h2>
+      <p>A response to an Office Action must be filed within the applicable period to avoid abandonment. The shortened statutory period is typically three months but may be extended by one, two or three months upon payment of extension fees (37 C.F.R. §1.136(a)). No extension may be obtained beyond the maximum statutory period of six months from the mailing date of the Office Action. Failure to respond within the maximum statutory period results in <strong>abandonment</strong> of the application.</p>
+
+      <!-- TF ACTIVITY -->
+      <h2>Learning Activity — True or False?</h2>
+      <div class="tf-activity">
+        <div class="tf-item">
+          <div class="tf-statement">The filing fee must be paid at the time of filing in order for the USPTO to accord a filing date to a non-provisional patent application.</div>
+          <div class="tf-btns">
+            <button class="tf-btn" onclick="checkTF(this, false, 'Incorrect. Under 37 C.F.R. §1.53, a filing date is accorded upon receipt of a specification including at least one claim and any required drawing. The filing fee is not required to obtain a filing date; however, a notice to file missing parts will be sent if fees are outstanding.')">True</button>
+            <button class="tf-btn" onclick="checkTF(this, true, 'Correct. Payment of the filing fee is not a prerequisite to obtaining a filing date. The USPTO will send a Notice to File Missing Parts if fees are not included with the application.')">False</button>
+          </div>
+          <div class="tf-explanation"></div>
+        </div>
+        <div class="tf-item">
+          <div class="tf-statement">After receiving a final Office Action, an applicant's only option is to appeal to the Patent Trial and Appeal Board.</div>
+          <div class="tf-btns">
+            <button class="tf-btn" onclick="checkTF(this, false, 'Incorrect. After a final rejection, the applicant has multiple options including: (1) filing an RCE to reopen prosecution; (2) filing a continuation application; (3) filing after-final amendments that comply with 37 C.F.R. §1.116; or (4) appealing to the PTAB. An RCE is often the most practical route if new claims or arguments are needed.')">True</button>
+            <button class="tf-btn" onclick="checkTF(this, true, 'Correct. Appeal to the PTAB is just one of several options available after a final rejection. Filing an RCE, filing a continuation, or submitting compliant after-final amendments are all available alternatives.')">False</button>
+          </div>
+          <div class="tf-explanation"></div>
+        </div>
+      </div>
+
+      <div class="ready-box">
+        <h3>Am I Ready to Move On?</h3>
+        <ul>
+          <li>What documents are required for the USPTO to accord a filing date to a non-provisional application?</li>
+          <li>What is the shortened statutory period for responding to an Office Action, and what is the maximum extension available?</li>
+          <li>What options are available to an applicant after receipt of a final Office Action?</li>
+          <li>What is the consequence of failing to respond to an Office Action within the maximum statutory period?</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════ TOPIC 7 ═══════════════════════════════════ -->
+    <div id="page-t7" class="page">
+      <div class="topic-header">
+        <div class="topic-meta">Topic 7</div>
+        <div class="topic-title">Claims Drafting and Interpretation</div>
+        <div class="topic-subtitle">Independent and dependent claims, claim differentiation, transitional phrases and interpretation standards</div>
+      </div>
+
+      <div class="box box-outcomes">
+        <h3>Learning Outcomes</h3>
+        <ul>
+          <li>Identify and apply the rules governing the form and content of claims under 37 C.F.R. §1.75</li>
+          <li>Distinguish independent, dependent, and multiple dependent claims and their scope relationships</li>
+          <li>Apply the doctrine of claim differentiation</li>
+          <li>Explain the significance of transitional phrases ("comprising", "consisting of", "consisting essentially of")</li>
+          <li>Apply the broadest reasonable interpretation (BRI) standard used during prosecution</li>
+        </ul>
+      </div>
+
+      <div class="box box-reading">
+        <h3>Topic Reading</h3>
+        <div class="reading-label">Primary MPEP References</div>
+        <ul>
+          <li><span class="mpep-badge">MPEP § 608.01(n)</span> Dependent Claims</li>
+          <li><span class="mpep-badge">MPEP § 2111</span> Claim Interpretation — Broadest Reasonable Interpretation</li>
+          <li><span class="mpep-badge">MPEP § 2114</span> Apparatus and Method Claims</li>
+          <li><span class="mpep-badge">MPEP § 2173</span> Claims Must be Definite</li>
+          <li><span class="mpep-badge">37 C.F.R. §1.75</span> Claim(s)</li>
+        </ul>
+      </div>
+
+      <h2>7.1 Claim Structure</h2>
+      <p>A patent claim defines the metes and bounds of the patent right. Each claim must consist of a single sentence and comprise: (i) a <strong>preamble</strong> identifying the category of the invention; (ii) a <strong>transitional phrase</strong> connecting the preamble to the body; and (iii) a <strong>body</strong> setting out the limitations (elements or steps) of the claim.</p>
+
+      <h2>7.2 Transitional Phrases</h2>
+      <p>The transitional phrase determines the openness of the claim — i.e., whether additional, unlisted elements in an accused product or process will still infringe:</p>
+      <ul style="margin:.5rem 0 1rem 1.5rem;font-size:.9rem;line-height:1.9;">
+        <li><strong>"Comprising":</strong> Open-ended. The claim covers embodiments that include at least the listed elements plus any additional, unrecited elements. This is the broadest and most common transitional phrase.</li>
+        <li><strong>"Consisting of":</strong> Closed. The claim covers only embodiments that include exactly the listed elements and no others (with the exception of trace impurities in chemical compositions).</li>
+        <li><strong>"Consisting essentially of":</strong> Semi-closed. The claim covers embodiments that include the listed elements and any additional elements that do not materially affect the basic and novel characteristics of the claimed invention.</li>
+      </ul>
+
+      <h2>7.3 Independent and Dependent Claims</h2>
+      <p>An independent claim stands alone and contains all the limitations defining the claimed invention. A dependent claim refers back to and incorporates by reference all limitations of an earlier claim (which may itself be independent or dependent), and adds at least one further limitation.</p>
+      <p>Under the <strong>doctrine of claim differentiation</strong>, there is a presumption that each claim has a different scope. A limitation present in a dependent claim is presumed not to be required by the independent claim from which it depends. This doctrine can be important both in claim drafting and in claim construction during prosecution.</p>
+
+      <h2>7.4 Broadest Reasonable Interpretation</h2>
+      <p>During examination, the USPTO applies the <strong>broadest reasonable interpretation (BRI)</strong> standard: claim terms are given their broadest reasonable meaning in light of the specification as it would be understood by a person of ordinary skill in the art. BRI is broader than the claim construction applied by courts in litigation (where the claims are construed in light of the full intrinsic record, following <em>Phillips v. AWH Corp.</em>, 415 F.3d 1303 (Fed. Cir. 2005)).</p>
+
+      <!-- EXAM QUESTION -->
+      <div class="exam-q" id="q7-1">
+        <div class="exam-q-label">Practice Examination Question</div>
+        <div class="exam-q-text">Claim 1 recites: "A composition comprising: compound A; and compound B." Claim 3 depends from claim 1 and recites: "The composition of claim 1, wherein compound A is present in an amount of 10-20% by weight." Under the doctrine of claim differentiation, which of the following is most accurate?</div>
+        <div class="exam-q-choices">
+          <div class="exam-q-choice" onclick="checkQ('q7-1','A','B')"><span class="letter">A.</span> Claim 1 is limited to compositions in which compound A is not present in an amount of 10-20% by weight, because claim 3 expressly claims that range.</div>
+          <div class="exam-q-choice" onclick="checkQ('q7-1','B','B')"><span class="letter">B.</span> Claim 1 covers compositions with compound A in any amount, including the 10-20% range; the doctrine of claim differentiation creates a presumption that claim 1's scope is broader than claim 3.</div>
+          <div class="exam-q-choice" onclick="checkQ('q7-1','C','B')"><span class="letter">C.</span> Claim 3 is invalid because it overlaps in scope with claim 1.</div>
+          <div class="exam-q-choice" onclick="checkQ('q7-1','D','B')"><span class="letter">D.</span> The doctrine of claim differentiation requires that claims must have completely non-overlapping scopes.</div>
+          <div class="exam-q-choice" onclick="checkQ('q7-1','E','B')"><span class="letter">E.</span> Claim 1 and Claim 3 have identical scope because claim 3 merely restates the limitations of claim 1 more precisely.</div>
+        </div>
+        <div class="exam-feedback" id="q7-1-fb"></div>
+      </div>
+
+      <div class="ready-box">
+        <h3>Am I Ready to Move On?</h3>
+        <ul>
+          <li>What are the three components of a patent claim, and what function does each serve?</li>
+          <li>Distinguish "comprising", "consisting of" and "consisting essentially of". Which is preferred for maximum claim scope?</li>
+          <li>Explain the doctrine of claim differentiation and its significance in prosecution and litigation.</li>
+          <li>How does the BRI standard differ from the Phillips claim construction standard used in litigation?</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════ TOPIC 8 ═══════════════════════════════════ -->
+    <div id="page-t8" class="page">
+      <div class="topic-header">
+        <div class="topic-meta">Topic 8</div>
+        <div class="topic-title">Continuation Practice and Amendments</div>
+        <div class="topic-subtitle">Continuation, divisional and CIP applications; RCEs; claim amendments and interview practice</div>
+      </div>
+
+      <div class="box box-outcomes">
+        <h3>Learning Outcomes</h3>
+        <ul>
+          <li>Distinguish continuation, divisional and continuation-in-part (CIP) applications and explain when each is appropriate</li>
+          <li>Apply the rules governing benefit claims and identify the deadline for claiming priority</li>
+          <li>Explain the Request for Continued Examination (RCE) procedure and its limitations</li>
+          <li>Apply the rules governing claim amendments during prosecution, including formal requirements</li>
+          <li>Understand the doctrine of prosecution history estoppel as it arises from amendments</li>
+        </ul>
+      </div>
+
+      <div class="box box-reading">
+        <h3>Topic Reading</h3>
+        <div class="reading-label">Primary MPEP References</div>
+        <ul>
+          <li><span class="mpep-badge">MPEP § 201.06</span> Continuation Application</li>
+          <li><span class="mpep-badge">MPEP § 201.06(b)</span> Continuation-in-Part Application</li>
+          <li><span class="mpep-badge">MPEP § 201.06(c)</span> Request for Continued Examination (RCE)</li>
+          <li><span class="mpep-badge">MPEP § 201.07</span> Divisional Application</li>
+          <li><span class="mpep-badge">MPEP § 706.07(h)</span> Request for Continued Examination After Final Rejection</li>
+        </ul>
+      </div>
+
+      <h2>8.1 Continuation Applications</h2>
+      <p>A <strong>continuation application</strong> is a second application for the same invention claimed in a prior application, filed while the prior application is pending. The continuation shares the same specification as the parent and is entitled to claim the benefit of the parent's filing date. No new matter may be added in a continuation — the claims must be supported by the original disclosure.</p>
+
+      <h2>8.2 Continuation-in-Part (CIP) Applications</h2>
+      <p>A <strong>continuation-in-part (CIP)</strong> application repeats a substantial portion of a prior application but adds new subject matter not disclosed in the prior application. Claims in a CIP that are supported only by the newly added matter receive only the filing date of the CIP itself (not the parent's filing date) for prior art purposes. This distinction is critical in the post-AIA environment.</p>
+
+      <h2>8.3 Divisional Applications</h2>
+      <p>A <strong>divisional application</strong> is used when a restriction requirement has been made in a parent application (requiring the applicant to elect one of multiple independent and distinct inventions). The divisional pursues the non-elected claims from the parent and is entitled to the parent's filing date. No new matter may be added.</p>
+
+      <h2>8.4 Request for Continued Examination (RCE)</h2>
+      <p>An RCE is a submission that reopens prosecution of a finally rejected application without the filing of a new application. The filing of an RCE is available after a final action (final rejection, notice of allowance, or examiner's answer). Upon filing an RCE, the status of the application returns to pending and prosecution continues. An RCE cannot be filed in a provisional application, a reissue application, or after a notice of allowance has been issued (unless within the period for response).</p>
+
+      <div class="box box-note">
+        <strong>Key Distinction:</strong> An RCE continues prosecution in the same application with the same serial number. A continuation application is a new application, assigned a new serial number, filed while the parent is pending. Both may present new claims and arguments, but the procedural rules and fee structures differ significantly.
+      </div>
+
+      <!-- EXAM QUESTION -->
+      <div class="exam-q" id="q8-1">
+        <div class="exam-q-label">Practice Examination Question</div>
+        <div class="exam-q-text">An inventor files Application A on 1 January 2024. On 1 June 2025, while Application A is still pending, the inventor files Application B, which reproduces the entire specification of Application A and adds three paragraphs disclosing a novel improvement to the original invention. New Claim 10 in Application B is directed to the improvement and is supported only by the three new paragraphs. For prior art purposes under AIA §102, what is the effective filing date of Claim 10 in Application B?</div>
+        <div class="exam-q-choices">
+          <div class="exam-q-choice" onclick="checkQ('q8-1','A','C')"><span class="letter">A.</span> 1 January 2024 — the filing date of Application A — because Application B claims the benefit of Application A under 35 U.S.C. §120.</div>
+          <div class="exam-q-choice" onclick="checkQ('q8-1','B','C')"><span class="letter">B.</span> 1 January 2024 — but only if Application B is a continuation, not a CIP.</div>
+          <div class="exam-q-choice" onclick="checkQ('q8-1','C','C')"><span class="letter">C.</span> 1 June 2025 — the filing date of Application B — because Claim 10 is supported only by subject matter added in Application B and not disclosed in Application A.</div>
+          <div class="exam-q-choice" onclick="checkQ('q8-1','D','C')"><span class="letter">D.</span> 1 January 2024 for all claims in Application B, because the CIP as a whole claims §120 benefit.</div>
+          <div class="exam-q-choice" onclick="checkQ('q8-1','E','C')"><span class="letter">E.</span> 1 June 2025 — the filing date of Application B — for all claims, because Application B contains new matter.</div>
+        </div>
+        <div class="exam-feedback" id="q8-1-fb"></div>
+      </div>
+
+      <div class="ready-box">
+        <h3>Am I Ready to Move On?</h3>
+        <ul>
+          <li>What is the difference between a continuation and a CIP? When can each be filed?</li>
+          <li>Under what circumstances is the effective filing date of a CIP claim the parent's filing date, versus the CIP's own filing date?</li>
+          <li>When may an RCE be filed, and when is it unavailable?</li>
+          <li>What is the significance of prosecution history estoppel arising from claim amendments?</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════ TOPIC 9 ═══════════════════════════════════ -->
+    <div id="page-t9" class="page">
+      <div class="topic-header">
+        <div class="topic-meta">Topic 9</div>
+        <div class="topic-title">PCT and International Patent Filing</div>
+        <div class="topic-subtitle">The Patent Cooperation Treaty, national phase entry, the international search report and US as RO/ISA/DO</div>
+      </div>
+
+      <div class="box box-outcomes">
+        <h3>Learning Outcomes</h3>
+        <ul>
+          <li>Explain the structure and purpose of the PCT system and the role of WIPO</li>
+          <li>Identify the key deadlines in PCT prosecution including national phase entry</li>
+          <li>Explain the roles of the receiving office (RO), international searching authority (ISA) and designated/elected offices</li>
+          <li>Apply the rules governing the international filing date, priority claims and the national/regional phase</li>
+          <li>Identify the Chapter I and Chapter II procedures and the effect of a demand for international preliminary examination</li>
+        </ul>
+      </div>
+
+      <div class="box box-reading">
+        <h3>Topic Reading</h3>
+        <div class="reading-label">Primary MPEP References</div>
+        <ul>
+          <li><span class="mpep-badge">MPEP § 1801</span> Basic PCT Principles</li>
+          <li><span class="mpep-badge">MPEP § 1802</span> PCT Definitions</li>
+          <li><span class="mpep-badge">MPEP § 1810</span> Filing of International Application</li>
+          <li><span class="mpep-badge">MPEP § 1840</span> The International Search</li>
+          <li><span class="mpep-badge">MPEP § 1850</span> National Phase of International Application</li>
+          <li><span class="mpep-badge">MPEP § 1893</span> National Stage Entry at the USPTO</li>
+        </ul>
+      </div>
+
+      <h2>9.1 Overview of the PCT System</h2>
+      <p>The Patent Cooperation Treaty (PCT), administered by the World Intellectual Property Organization (WIPO), provides a unified procedure for filing patent applications simultaneously in multiple countries. A single international application filed under the PCT has the effect of a national filing in all designated Contracting States. The PCT does <em>not</em> result in an "international patent" — patents are ultimately granted by each national or regional office during the national phase.</p>
+
+      <h2>9.2 Key PCT Deadlines</h2>
+      <ul style="margin:.5rem 0 1rem 1.5rem;font-size:.9rem;line-height:1.9;">
+        <li><strong>12 months:</strong> Priority claim must be made within 12 months of the earliest priority application under the Paris Convention.</li>
+        <li><strong>30 months:</strong> National/regional phase entry is required by 30 months from the earliest priority date (or international filing date if no priority is claimed) in most Contracting States, including the United States (37 C.F.R. §1.495).</li>
+        <li><strong>16 months (Chapter II):</strong> A demand for international preliminary examination must be filed within 3 months of the international search report/written opinion or 22 months from the priority date, whichever is later.</li>
+      </ul>
+
+      <div class="box box-warn">
+        <strong>Critical Deadline:</strong> Entry into the U.S. national phase must occur by <strong>30 months from the priority date</strong>. Missing this deadline results in abandonment of the international application as to the United States. A petition to revive on the basis of unintentional delay is available but is not guaranteed to succeed and should not be relied upon.
+      </div>
+
+      <h2>9.3 The Receiving Office and International Search</h2>
+      <p>A PCT application may be filed at any competent Receiving Office (RO). For U.S. applicants, the USPTO acts as the RO. The RO checks the application for formal compliance and transmits it to WIPO (IB) and the designated ISA. The ISA conducts the international search and issues an <strong>International Search Report (ISR)</strong> and <strong>Written Opinion</strong> on patentability within approximately 16 months of the priority date.</p>
+
+      <h2>9.4 National Phase Entry in the United States</h2>
+      <p>To enter the U.S. national phase, the applicant must: (i) pay the national stage fee; (ii) submit an executed oath or declaration; and (iii) furnish the English translation of the international application (if filed in a language other than English). The U.S. national stage application is examined under the same rules and standards as a domestic non-provisional application.</p>
+
+      <!-- EXAM QUESTION -->
+      <div class="exam-q" id="q9-1">
+        <div class="exam-q-label">Practice Examination Question</div>
+        <div class="exam-q-text">An inventor files a U.S. provisional application on 1 March 2024. On 28 February 2025, the inventor timely files a PCT application claiming priority to the provisional. By what date must the inventor enter the U.S. national phase (assuming no extension is available)?</div>
+        <div class="exam-q-choices">
+          <div class="exam-q-choice" onclick="checkQ('q9-1','A','D')"><span class="letter">A.</span> 28 February 2026 — 12 months from the PCT filing date.</div>
+          <div class="exam-q-choice" onclick="checkQ('q9-1','B','D')"><span class="letter">B.</span> 1 March 2026 — 24 months from the provisional filing date.</div>
+          <div class="exam-q-choice" onclick="checkQ('q9-1','C','D')"><span class="letter">C.</span> 1 September 2026 — 18 months from the PCT filing date.</div>
+          <div class="exam-q-choice" onclick="checkQ('q9-1','D','D')"><span class="letter">D.</span> 1 September 2026 — 30 months from the earliest priority date, which is the provisional filing date of 1 March 2024.</div>
+          <div class="exam-q-choice" onclick="checkQ('q9-1','E','D')"><span class="letter">E.</span> 28 February 2027 — 24 months from the PCT filing date.</div>
+        </div>
+        <div class="exam-feedback" id="q9-1-fb"></div>
+      </div>
+
+      <div class="ready-box">
+        <h3>Am I Ready to Move On?</h3>
+        <ul>
+          <li>What does the PCT system offer and what does it not provide? Does a PCT application result in an "international patent"?</li>
+          <li>What are the key PCT deadlines and from what date are they calculated?</li>
+          <li>What are the minimum requirements for U.S. national stage entry?</li>
+          <li>What is the difference between the ISR and the International Preliminary Report on Patentability?</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════ TOPIC 10 ═══════════════════════════════════ -->
+    <div id="page-t10" class="page">
+      <div class="topic-header">
+        <div class="topic-meta">Topic 10</div>
+        <div class="topic-title">Post-Grant Proceedings — IPR, PGR and Ex Parte Reexamination</div>
+        <div class="topic-subtitle">AIA trial proceedings before the PTAB and reexamination procedures</div>
+      </div>
+
+      <div class="box box-outcomes">
+        <h3>Learning Outcomes</h3>
+        <ul>
+          <li>Explain the threshold standard for institution of IPR and PGR proceedings and the grounds available in each</li>
+          <li>Apply the deadlines for filing IPR and PGR petitions</li>
+          <li>Explain the ex parte reexamination procedure and its availability to third parties</li>
+          <li>Distinguish IPR from PGR in terms of grounds, timing and standing requirements</li>
+          <li>Apply the key rules from the Consolidated Trial Practice Guide governing PTAB trial conduct</li>
+        </ul>
+      </div>
+
+      <div class="box box-reading">
+        <h3>Topic Reading</h3>
+        <div class="reading-label">Primary Sources</div>
+        <ul>
+          <li><span class="mpep-badge">TPGC §§ I–III</span> Consolidated Trial Practice Guide (November 2019) — Petitions, Institution, Trial Conduct</li>
+          <li><span class="mpep-badge">MPEP § 2200</span> Citation of Prior Art and Ex Parte Reexamination of Patents</li>
+          <li><span class="mpep-badge">MPEP § 2600</span> Optional Inter Partes Reexamination</li>
+          <li><span class="mpep-badge">35 U.S.C. §311–319</span> Inter Partes Review</li>
+          <li><span class="mpep-badge">35 U.S.C. §321–329</span> Post-Grant Review</li>
+        </ul>
+      </div>
+
+      <h2>10.1 Inter Partes Review (IPR)</h2>
+      <p>IPR is a trial proceeding conducted by the PTAB under 35 U.S.C. §§311–319 (AIA). A petition for IPR may be filed by any person who is not the patent owner and has not been served with a complaint for infringement of the patent more than one year before the petition. IPR may only be filed after the later of: (i) 9 months after the date of grant of the patent; or (ii) if a PGR was filed, the termination of the PGR proceeding.</p>
+
+      <h3>Grounds Available in IPR</h3>
+      <p>IPR is limited to challenges based on <strong>§102 (novelty)</strong> and <strong>§103 (obviousness)</strong> using only prior art consisting of patents and printed publications. Challenges based on §101, §112, public use or on-sale bar cannot be raised in IPR.</p>
+
+      <h3>Institution Standard</h3>
+      <p>The PTAB will institute IPR only if the petition demonstrates a reasonable likelihood that the petitioner would prevail with respect to at least one challenged claim. This is a threshold determination made on the papers submitted.</p>
+
+      <h2>10.2 Post-Grant Review (PGR)</h2>
+      <p>PGR must be filed within <strong>9 months of the date of grant</strong> of the challenged patent. PGR is available on any ground of invalidity, including §§101, 102, 103 and 112, as well as the public use and on-sale bars. The institution standard for PGR requires that the petition demonstrate it is more likely than not that at least one challenged claim is unpatentable.</p>
+
+      <h2>10.3 Ex Parte Reexamination</h2>
+      <p>Ex parte reexamination under 35 U.S.C. §302 may be requested by any person (including the patent owner) at any time during the period of enforceability of the patent. The requester must submit prior art consisting of patents or printed publications and demonstrate that the prior art raises a <strong>substantial new question of patentability (SNQ)</strong> as to at least one claim. Once reexamination is ordered, the proceeding is conducted ex parte — i.e., third-party requesters have limited participation rights after the initial request.</p>
+
+      <!-- EXAM QUESTION -->
+      <div class="exam-q" id="q10-1">
+        <div class="exam-q-label">Practice Examination Question</div>
+        <div class="exam-q-text">Company X wishes to challenge a patent that was granted 5 months ago. Company X has not been served with a complaint for patent infringement. Company X believes the patent claims are unpatentable under 35 U.S.C. §101 and §103. Which of the following proceedings is most appropriate for Company X to pursue at this time?</div>
+        <div class="exam-q-choices">
+          <div class="exam-q-choice" onclick="checkQ('q10-1','A','B')"><span class="letter">A.</span> Inter partes review (IPR), because it is available on §101 and §103 grounds.</div>
+          <div class="exam-q-choice" onclick="checkQ('q10-1','B','B')"><span class="letter">B.</span> Post-grant review (PGR), because it is available on all grounds of invalidity including §101 and §103, and the 9-month window from grant has not yet closed.</div>
+          <div class="exam-q-choice" onclick="checkQ('q10-1','C','B')"><span class="letter">C.</span> Ex parte reexamination, because it is available at any time and on any ground of invalidity.</div>
+          <div class="exam-q-choice" onclick="checkQ('q10-1','D','B')"><span class="letter">D.</span> Inter partes review (IPR), because the 9-month post-grant window has not closed so IPR is the preferred proceeding.</div>
+          <div class="exam-q-choice" onclick="checkQ('q10-1','E','B')"><span class="letter">E.</span> Company X cannot challenge the patent before the PTAB until 12 months after the date of grant.</div>
+        </div>
+        <div class="exam-feedback" id="q10-1-fb"></div>
+      </div>
+
+      <div class="ready-box">
+        <h3>Am I Ready to Move On?</h3>
+        <ul>
+          <li>What are the grounds available for IPR versus PGR? What type of prior art may be used in each?</li>
+          <li>What is the timing constraint for filing a PGR petition? What about IPR?</li>
+          <li>What is the institution standard for IPR? How does it differ from the PGR standard?</li>
+          <li>What is the SNQ standard in ex parte reexamination, and who may file a request?</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════ TOPIC 11 ═══════════════════════════════════ -->
+    <div id="page-t11" class="page">
+      <div class="topic-header">
+        <div class="topic-meta">Topic 11</div>
+        <div class="topic-title">Ethics and Professional Responsibility</div>
+        <div class="topic-subtitle">37 C.F.R. Part 11, the USPTO Rules of Professional Conduct, and representation before the USPTO</div>
+      </div>
+
+      <div class="box box-outcomes">
+        <h3>Learning Outcomes</h3>
+        <ul>
+          <li>Identify who may practice before the USPTO in patent matters and the eligibility requirements</li>
+          <li>Apply the duty of candour and good faith under 37 C.F.R. §1.56 and the doctrine of inequitable conduct</li>
+          <li>Explain the conflict of interest rules applicable to patent practitioners</li>
+          <li>Apply the rules governing the unauthorised practice of patent law</li>
+          <li>Explain the disciplinary proceedings available to the USPTO under 37 C.F.R. Part 11</li>
+        </ul>
+      </div>
+
+      <div class="box box-reading">
+        <h3>Topic Reading</h3>
+        <div class="reading-label">Primary Sources</div>
+        <ul>
+          <li><span class="mpep-badge">37 C.F.R. § 11.1–11.901</span> Representation of Others Before the USPTO; USPTO Rules of Professional Conduct</li>
+          <li><span class="mpep-badge">37 C.F.R. § 1.56</span> Duty to Disclose Information Material to Patentability</li>
+          <li><span class="mpep-badge">78 Fed. Reg. 20,180</span> Changes to Representation of Others Before the USPTO Final Rules (April 3, 2013)</li>
+          <li><span class="mpep-badge">MPEP § 2001</span> Duty of Disclosure, Candor and Good Faith</li>
+        </ul>
+      </div>
+
+      <h2>11.1 Who May Practice Before the USPTO</h2>
+      <p>Only registered patent practitioners — patent attorneys (who are also members of a state bar) and patent agents (who are not lawyers but have passed the Patent Bar) — may represent others before the USPTO in patent prosecution matters. An applicant may, however, prosecute their own patent application (prosecute "pro se"). Registered practitioners must maintain their registration and comply with continuing requirements imposed by the USPTO.</p>
+
+      <h2>11.2 The Duty of Candour — 37 C.F.R. §1.56</h2>
+      <p>Each individual associated with the filing and prosecution of a patent application — including the inventor, the registered practitioner and all persons substantively involved — has a duty to disclose to the USPTO all information that is material to patentability. Failure to comply with this duty may result in a finding of <strong>inequitable conduct</strong>, which can render the entire patent unenforceable (not just the specific claims affected by the non-disclosure).</p>
+
+      <div class="box box-warn">
+        <strong>Critical Rule:</strong> The duty of candour under §1.56 applies throughout prosecution and during reexamination. It ends upon the issuance of the patent. However, withheld material information discovered after prosecution but before issuance must be promptly disclosed. Failure to disclose known material prior art is the most common source of inequitable conduct allegations.
+      </div>
+
+      <h2>11.3 Conflicts of Interest</h2>
+      <p>The USPTO Rules of Professional Conduct (37 C.F.R. Part 11, modelled on the ABA Model Rules) prohibit a practitioner from representing a client if the representation involves a concurrent conflict of interest — i.e., if the representation of one client is directly adverse to another client, or if there is a significant risk that the representation will be materially limited by the practitioner's responsibilities to another client. Informed consent, confirmed in writing, is required to waive most conflicts.</p>
+
+      <h2>11.4 Disciplinary Proceedings</h2>
+      <p>The USPTO Office of Enrollment and Discipline (OED) has authority to discipline registered practitioners. Sanctions available include: reprimand, suspension, or exclusion from practice before the USPTO. The 2013 Final Rules (78 Fed. Reg. 20,180) updated the disciplinary rules and aligned them more closely with the ABA Model Rules of Professional Conduct.</p>
+
+      <!-- EXAM QUESTION -->
+      <div class="exam-q" id="q11-1">
+        <div class="exam-q-label">Practice Examination Question</div>
+        <div class="exam-q-text">A registered patent agent is prosecuting a patent application on behalf of Company A. During prosecution, the agent discovers a prior art reference that appears highly material to the patentability of the pending claims. The agent believes the reference may result in rejection of all claims. Company A instructs the agent not to disclose the reference to the USPTO. What is the agent's obligation?</div>
+        <div class="exam-q-choices">
+          <div class="exam-q-choice" onclick="checkQ('q11-1','A','D')"><span class="letter">A.</span> The agent must follow the client's instructions because the client controls the prosecution strategy.</div>
+          <div class="exam-q-choice" onclick="checkQ('q11-1','B','D')"><span class="letter">B.</span> The agent may exercise professional judgment to withhold the reference if the agent genuinely believes it is not material.</div>
+          <div class="exam-q-choice" onclick="checkQ('q11-1','C','D')"><span class="letter">C.</span> The agent should disclose the reference only if it is explicitly cited in another party's prosecution history.</div>
+          <div class="exam-q-choice" onclick="checkQ('q11-1','D','D')"><span class="letter">D.</span> The agent must disclose the material prior art reference to the USPTO, notwithstanding the client's instruction. If Company A insists on non-disclosure, the agent must withdraw from representation. The duty of candour under 37 C.F.R. §1.56 cannot be overridden by client instruction.</div>
+          <div class="exam-q-choice" onclick="checkQ('q11-1','E','D')"><span class="letter">E.</span> The agent's obligation depends on whether the reference was discovered before or after the examiner issued a first Office Action.</div>
+        </div>
+        <div class="exam-feedback" id="q11-1-fb"></div>
+      </div>
+
+      <div class="ready-box">
+        <h3>Am I Ready to Move On?</h3>
+        <ul>
+          <li>Who may represent others in patent prosecution before the USPTO? What is the difference between a patent attorney and a patent agent?</li>
+          <li>What is the duty of candour under 37 C.F.R. §1.56? When does it arise and when does it end?</li>
+          <li>What is the consequence of a finding of inequitable conduct? Does it affect the entire patent or only certain claims?</li>
+          <li>What disciplinary sanctions may the USPTO's OED impose on a registered practitioner?</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════ TOPIC 12 ═══════════════════════════════════ -->
+    <div id="page-t12" class="page">
+      <div class="topic-header">
+        <div class="topic-meta">Topic 12</div>
+        <div class="topic-title">Patent Prosecution Highway (PPH)</div>
+        <div class="topic-subtitle">Global and IP5 PPH programmes, eligibility requirements and procedural requirements for PPH requests</div>
+      </div>
+
+      <div class="box box-outcomes">
+        <h3>Learning Outcomes</h3>
+        <ul>
+          <li>Explain the purpose and structure of the Patent Prosecution Highway programme</li>
+          <li>Identify the eligibility requirements for filing a PPH request at the USPTO</li>
+          <li>Explain the procedural requirements for a compliant PPH request including necessary documentation</li>
+          <li>Distinguish between the Global PPH and the IP5 PPH pilot programmes</li>
+          <li>Explain the accelerated examination benefit of the PPH and its limitations</li>
+        </ul>
+      </div>
+
+      <div class="box box-reading">
+        <h3>Topic Reading</h3>
+        <div class="reading-label">Primary Sources</div>
+        <ul>
+          <li><span class="mpep-badge">PPH Notice</span> Implementation of the Global and IP5 Patent Prosecution Highway (PPH) Pilot Programs with Participating Offices (USPTO Notice)</li>
+          <li><span class="mpep-badge">MPEP § 708.02(a)</span> Accelerated Examination — Patent Prosecution Highway</li>
+          <li><span class="mpep-badge">37 C.F.R. § 1.102(e)</span> Advancement of Examination</li>
+        </ul>
+      </div>
+
+      <h2>12.1 What is the Patent Prosecution Highway?</h2>
+      <p>The Patent Prosecution Highway (PPH) is a framework that allows applicants to fast-track examination of a patent application at a second patent office, based on a positive examination outcome (i.e., a finding that at least one claim is allowable) at a first patent office. The PPH takes advantage of work already done by the first office to streamline examination at the second office, reducing backlog and cost for applicants who seek patent protection in multiple jurisdictions.</p>
+
+      <h2>12.2 Global PPH and IP5 PPH</h2>
+      <p>The <strong>Global PPH</strong> is a single framework agreement that allows PPH participation between any two participating offices, using a standardised set of requirements. The <strong>IP5 PPH</strong> is a programme among the five largest patent offices: the USPTO, the European Patent Office (EPO), the Japan Patent Office (JPO), the Korean Intellectual Property Office (KIPO) and the China National Intellectual Property Administration (CNIPA). Both programmes have operated on a pilot basis, subject to periodic renewal.</p>
+
+      <h2>12.3 Eligibility Requirements for a PPH Request at the USPTO</h2>
+      <p>To request PPH at the USPTO based on work from an Office of Earlier Examination (OEE), the applicant must satisfy the following conditions:</p>
+      <ul style="margin:.5rem 0 1rem 1.5rem;font-size:.9rem;line-height:1.9;">
+        <li>The U.S. application must be <strong>pending</strong> and not yet indicated as allowable.</li>
+        <li>At least one claim of the corresponding application at the OEE has been found allowable/patentable.</li>
+        <li>All claims in the U.S. application for which PPH is requested must <strong>sufficiently correspond</strong> to the claims found allowable at the OEE.</li>
+        <li>The U.S. application must claim priority to, or be otherwise related to, the application at the OEE.</li>
+        <li>The request must include copies of the office actions and claims from the OEE, and an information disclosure statement (IDS) citing documents cited by the OEE.</li>
+      </ul>
+
+      <div class="box box-note">
+        <strong>Examination Tip:</strong> The PPH "sufficiently corresponds" requirement for claims is a frequently tested point. Claims in the U.S. application must be of equal or narrower scope than the allowed claims at the OEE — broader U.S. claims will not qualify for PPH treatment. Applicants may need to amend U.S. claims to meet this requirement before filing the PPH request.
+      </div>
+
+      <h2>12.4 Effect of a PPH Request</h2>
+      <p>A compliant PPH request will result in the U.S. application being advanced out of turn for examination. Unlike a petition to make special (which requires a fee and detailed showing), PPH-based advancement is automatic upon a compliant request. The USPTO examiner is expected to consider the allowability findings and prior art from the OEE when examining the corresponding U.S. claims, which often results in a more efficient prosecution.</p>
+
+      <!-- EXAM QUESTION -->
+      <div class="exam-q" id="q12-1">
+        <div class="exam-q-label">Practice Examination Question</div>
+        <div class="exam-q-text">An applicant has a patent application pending at the JPO (a participating IP5 PPH office) in which claims 1 and 2 have been found allowable and claim 3 has been rejected. A corresponding U.S. application is pending with claims 1, 2 and 3 that correspond to the JPO claims. Claim 1 in the U.S. application is broader in scope than claim 1 found allowable at the JPO. The applicant wishes to file a PPH request at the USPTO for claims 1 and 2 only. Which of the following is correct?</div>
+        <div class="exam-q-choices">
+          <div class="exam-q-choice" onclick="checkQ('q12-1','A','D')"><span class="letter">A.</span> The PPH request is proper because only claims 1 and 2 are being requested for PPH treatment and both have corresponding allowable claims at the JPO.</div>
+          <div class="exam-q-choice" onclick="checkQ('q12-1','B','D')"><span class="letter">B.</span> The PPH request is improper because the applicant must request PPH for all pending claims, including claim 3.</div>
+          <div class="exam-q-choice" onclick="checkQ('q12-1','C','D')"><span class="letter">C.</span> The PPH request is proper, provided the applicant submits a copy of the JPO allowance and an IDS citing documents relied upon by the JPO.</div>
+          <div class="exam-q-choice" onclick="checkQ('q12-1','D','D')"><span class="letter">D.</span> The PPH request is improper as to claim 1 because the U.S. claim 1 is broader than the corresponding allowed JPO claim and therefore does not sufficiently correspond. The applicant must amend U.S. claim 1 to be of equal or narrower scope before the PPH request for claim 1 can be accepted.</div>
+          <div class="exam-q-choice" onclick="checkQ('q12-1','E','D')"><span class="letter">E.</span> The PPH programme does not apply to IP5 offices; it is only available under the Global PPH framework for non-IP5 offices.</div>
+        </div>
+        <div class="exam-feedback" id="q12-1-fb"></div>
+      </div>
+
+      <div class="ready-box">
+        <h3>Am I Ready to Move On?</h3>
+        <ul>
+          <li>What is the purpose of the PPH programme and how does it benefit applicants prosecuting in multiple jurisdictions?</li>
+          <li>What is the "sufficiently corresponds" requirement for PPH claims, and what must an applicant do if their U.S. claims are broader than the allowed OEE claims?</li>
+          <li>What documentation must be included with a compliant PPH request at the USPTO?</li>
+          <li>What is the difference between the Global PPH and the IP5 PPH?</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════ SOURCES ═══════════════════════════════════ -->
+    <div id="page-sources" class="page">
+      <div class="topic-header">
+        <div class="topic-meta">Reference</div>
+        <div class="topic-title">Source Materials and References</div>
+        <div class="topic-subtitle">All source materials designated for the USPTO Patent Practitioner Examination effective 24 September 2025</div>
+      </div>
+
+      <h2>Designated Source Materials</h2>
+      <div class="box box-reading">
+        <div class="reading-label">Source 1 — Primary Reference</div>
+        <ul>
+          <li><strong>Manual of Patent Examining Procedure (MPEP)</strong>, Ninth Edition, Revision 01.2024, Published November 2024<br>
+          <em>Available at: </em><span class="mpep-badge">https://www.uspto.gov/web/offices/pac/mpep/index.html</span></li>
+        </ul>
+        <div class="reading-label">Source 2 — PTAB Practice</div>
+        <ul>
+          <li><strong>Consolidated Trial Practice Guide</strong>, November 2019<br>
+          <em>Available at: </em><span class="mpep-badge">https://www.uspto.gov/TrialPracticeGuideConsolidated</span></li>
+        </ul>
+        <div class="reading-label">Source 3 — Professional Responsibility</div>
+        <ul>
+          <li><strong>Changes to Representation of Others Before the USPTO Final Rules</strong>, 78 Fed. Reg. 20,180 (April 3, 2013)<br>
+          <em>Available at: </em><span class="mpep-badge">http://www.gpo.gov/fdsys/pkg/FR-2013-04-03/pdf/2013-07382.pdf</span></li>
+        </ul>
+        <div class="reading-label">Source 4 — Patent Prosecution Highway</div>
+        <ul>
+          <li><strong>Implementation of the Global and IP5 Patent Prosecution Highway (PPH) Pilot Programs with Participating Offices</strong><br>
+          <em>Available at: </em><span class="mpep-badge">http://www.uspto.gov/patents/law/notices/global-ip</span></li>
+        </ul>
+      </div>
+
+      <h2>Further Reading</h2>
+      <ul class="further-reading">
+        <li>Faber, Robert C. <em>Faber on Mechanics of Patent Claim Drafting</em> (7th ed., Practising Law Institute). The leading practitioner guide on claim drafting.</li>
+        <li>Moy, R. Carl. <em>Moy's Walker on Patents</em> (Thomson Reuters). A comprehensive treatise on U.S. patent law.</li>
+        <li>Chisum, Donald S. <em>Chisum on Patents</em> (Matthew Bender). The definitive multi-volume treatise on U.S. patent law and practice.</li>
+        <li>USPTO Patent Bar Examination Study Guide (PLI Press). Question-and-answer preparation materials with annotated MPEP references.</li>
+        <li>Lemley, Mark A. "The Myth of the Sole Inventor" (2012) 110 Michigan Law Review 709. Academic commentary on the patent system's foundational assumptions.</li>
+      </ul>
+    </div>
+
+  </main>
+</div>
+
+<script>
+  // ─── NAVIGATION ───
+  function showPage(id, linkEl) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.sidebar a').forEach(a => a.classList.remove('active'));
+    const el = document.getElementById('page-' + id);
+    if (el) el.classList.add('active');
+    if (linkEl) linkEl.classList.add('active');
+    else {
+      document.querySelectorAll('.sidebar a').forEach(a => {
+        if (a.getAttribute('onclick') && a.getAttribute('onclick').includes("'" + id + "'")) {
+          a.classList.add('active');
+        }
+      });
+    }
+    window.scrollTo(0, 0);
+  }
+
+  // ─── MULTIPLE CHOICE QUESTIONS ───
+  const feedbackMessages = {
+    'A': 'Incorrect.',
+    'B': 'Incorrect.',
+    'C': 'Incorrect.',
+    'D': 'Incorrect.',
+    'E': 'Incorrect.'
+  };
+
+  const correctFeedback = {
+    'q1-1': 'Correct. Under 35 U.S.C. §154(a)(2), a utility patent has a term of 20 years from the effective filing date of the earliest U.S. application to which the patent claims priority. Answer C is correct: 20 years from 1 January 2026 = 1 January 2046. The pre-AIA "17 years from grant" term no longer applies to applications filed after 8 June 1995.',
+    'q2-1': 'Correct. The claim recites a natural correlation between thrombin levels and clotting risk (a law of nature) and then instructs a physician to apply conventional medical steps in light of that correlation. Under Mayo and MPEP §2106, additional steps that amount only to well-understood, routine, conventional activity in the relevant field are insufficient to integrate the law of nature into a practical application. Answer B is the most accurate basis for the §101 rejection.',
+    'q3-1': 'Correct. The conference disclosure is prior art under §102(a)(1) — it occurred more than 12 months before A\'s 1 March 2026 filing, so the §102(b)(1) grace period (limited to 1 year before filing) does not excuse it. The third-party publication within the one-year window is also prior art under §102(a)(1): the AIA grace period only protects disclosures made by or derived from the inventor, not independent third-party disclosures. Answer D is correct.',
+    'q4-1': 'Correct. Post-KSR (2007), the USPTO does not require an express teaching, suggestion or motivation in the prior art itself. It is sufficient that the examiner articulates a reason — such as that a POSITA would have combined the references because doing so would yield predictable results. Answer C is correct. The flexibility permitted by KSR means that common sense, design incentives and market forces can also provide the rationale for combination.',
+    'q5-1': 'Correct. Under §112(f), a means-plus-function claim is construed to cover the corresponding structure disclosed in the specification and its equivalents. The equivalents analysis applies the "function-way-result" test: whether the accused device performs substantially the same function in substantially the same way to achieve substantially the same result as the disclosed structure. A thermistor and thermocouple both detect temperature changes (same function), but whether the way and result are substantially the same is a factual question. Answer C is correct.',
+    'q7-1': 'Correct. The doctrine of claim differentiation creates a rebuttable presumption that each claim has a different (and in this case broader) scope. Independent Claim 1 covers compositions with compound A in any amount — including the 10-20% range — because that specific limitation has been expressly placed in dependent Claim 3. The existence of Claim 3 confirms that Claim 1 is not limited to that range. Answer B is correct.',
+    'q8-1': 'Correct. In a CIP application, only claims that find full support in the parent application receive the benefit of the parent\'s filing date. Claims that are supported only by newly added subject matter — such as Claim 10 here — receive only the filing date of the CIP itself, which is 1 June 2025. Answer C is correct. This is a critical distinction in the post-AIA environment because the effective filing date determines which prior art applies.',
+    'q9-1': 'Correct. The 30-month national phase entry deadline is calculated from the earliest claimed priority date. The priority date here is the provisional application filing date of 1 March 2024. 30 months from 1 March 2024 = 1 September 2026. Answer D is correct.',
+    'q10-1': 'Correct. PGR must be filed within 9 months of the date of grant. Since the patent was granted only 5 months ago, the PGR window is still open. PGR is available on all grounds of invalidity including §101 and §103, unlike IPR which is limited to §102 and §103 grounds based on patents and printed publications. Answer B is correct.',
+    'q11-1': 'Correct. Under 37 C.F.R. §1.56, the duty of candour is owed to the USPTO, not to the client. It cannot be overridden by a client\'s instruction. The registered practitioner must disclose material prior art. If the client insists on non-disclosure, the practitioner\'s only ethical option is to withdraw from the representation. Answer D is correct. Proceeding in violation of §1.56 exposes the practitioner to disciplinary proceedings and may render the patent unenforceable.',
+    'q12-1': 'Correct. A PPH request requires that U.S. claims "sufficiently correspond" to the allowed OEE claims — meaning they must be of equal or narrower scope. U.S. claim 1, being broader than the allowed JPO claim 1, does not satisfy this requirement. The applicant must amend U.S. claim 1 to equal or narrower scope before the PPH request will be accepted for that claim. Answer D is correct.'
+  };
+
+  function checkQ(qId, selected, correct) {
+    const container = document.getElementById(qId);
+    const choices = container.querySelectorAll('.exam-q-choice');
+    const fb = document.getElementById(qId + '-fb');
+    const letters = ['A','B','C','D','E'];
+    choices.forEach((c, i) => {
+      c.classList.remove('correct','incorrect');
+      if (letters[i] === correct) c.classList.add('correct');
+      else if (letters[i] === selected && selected !== correct) c.classList.add('incorrect');
+      c.onclick = null;
+    });
+    fb.className = 'exam-feedback show ' + (selected === correct ? 'correct-fb' : 'incorrect-fb');
+    if (selected === correct) {
+      fb.innerHTML = '✓ <strong>Correct.</strong> ' + correctFeedback[qId];
+    } else {
+      fb.innerHTML = '✗ <strong>Incorrect.</strong> The correct answer is <strong>' + correct + '</strong>. ' + correctFeedback[qId];
+    }
+  }
+
+  // ─── TRUE / FALSE ───
+  function checkTF(btn, isTrue, explanation) {
+    const item = btn.closest('.tf-item');
+    const btns = item.querySelectorAll('.tf-btn');
+    const expEl = item.querySelector('.tf-explanation');
+    // Determine if the clicked button represents "True" (first btn) or "False" (second btn)
+    const clickedTrue = btns[0] === btn;
+    btns.forEach(b => { b.classList.remove('selected-t','selected-f'); b.onclick = null; });
+    btn.classList.add(isTrue ? 'selected-t' : 'selected-f');
+    expEl.textContent = explanation;
+    expEl.classList.add('show');
+  }
+</script>
+</body>
+</html>

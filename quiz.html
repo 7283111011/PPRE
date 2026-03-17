@@ -76,7 +76,7 @@
   .main { margin-left: var(--sidebar-w); flex: 1; padding: 2.5rem 3rem 4rem; }
 
   /* ── HUB ── */
-  #screen-hub { }
+  /* #screen-hub styles removed: empty ruleset */
   .hub-header { border-bottom: 3px solid var(--gold); margin-bottom: 2rem; padding-bottom: 1rem; }
   .hub-meta { font-size: .7rem; text-transform: uppercase; letter-spacing: .1em; color: var(--gold); font-weight: 600; margin-bottom: .35rem; }
   .hub-title { font-family: 'EB Garamond', serif; font-size: 2rem; font-weight: 600; color: var(--navy); line-height: 1.25; }
@@ -96,429 +96,37 @@
   .topic-card.done { border-top-color: var(--gold); }
   .tc-num { font-size: .65rem; text-transform: uppercase; letter-spacing: .1em; color: var(--gold); font-weight: 700; }
   .tc-title { font-family: 'EB Garamond', serif; font-size: .95rem; font-weight: 600; color: var(--navy); line-height: 1.3; margin: .3rem 0; }
-  .tc-mpep { font-family: 'JetBrains Mono', monospace; font-size: .68rem; color: var(--grey-400); }
-  .tc-score { font-size: .72rem; margin-top: .6rem; font-weight: 600; }
-  .tc-score.pass { color: var(--green); }
-  .tc-score.fail { color: var(--red); }
-  .tc-score.untried { color: var(--grey-400); }
-  .tc-btn {
-    margin-top: .75rem; background: var(--navy); color: var(--gold-light); border: none;
-    padding: .4rem .9rem; border-radius: 4px; font-size: .78rem; font-weight: 600;
-    cursor: pointer; letter-spacing: .04em; text-transform: uppercase; transition: background .15s;
-    width: 100%;
-  }
-  .tc-btn:hover { background: var(--navy-light); }
-
-  /* ── QUIZ SCREEN ── */
-  #screen-quiz { display: none; }
-  .quiz-header { margin-bottom: 1.75rem; }
-  .quiz-meta { font-size: .7rem; text-transform: uppercase; letter-spacing: .1em; color: var(--gold); font-weight: 600; }
-  .quiz-title { font-family: 'EB Garamond', serif; font-size: 1.65rem; font-weight: 600; color: var(--navy); }
-
-  .progress-row { display: flex; align-items: center; gap: 1rem; margin: 1rem 0; }
-  .progress-track { flex: 1; height: 6px; background: var(--grey-200); border-radius: 3px; overflow: hidden; }
-  .progress-fill { height: 100%; background: var(--gold); border-radius: 3px; transition: width .3s ease; }
-  .progress-label { font-family: 'JetBrains Mono', monospace; font-size: .78rem; color: var(--grey-600); white-space: nowrap; }
-
-  .q-card {
-    background: var(--navy); color: #e8f0fb; border-radius: 10px;
-    padding: 2rem; margin: 1.5rem 0;
-  }
-  .q-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem; }
-  .q-label { font-size: .68rem; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--gold-light); }
-  .q-mpep { font-family: 'JetBrains Mono', monospace; font-size: .68rem; background: rgba(200,146,42,.2); color: var(--gold-light); padding: .15rem .5rem; border-radius: 3px; }
-  .q-scenario {
-    background: rgba(255,255,255,.06); border-left: 3px solid var(--gold);
-    padding: .9rem 1.1rem; border-radius: 4px; margin-bottom: 1.25rem;
-    font-size: .88rem; line-height: 1.7; color: #d4e4f7;
-  }
-  .q-stem { font-family: 'EB Garamond', serif; font-size: 1.08rem; line-height: 1.65; margin-bottom: 1.25rem; }
-  .choices { display: flex; flex-direction: column; gap: .5rem; }
-  .choice {
-    display: flex; align-items: flex-start; gap: .85rem;
-    padding: .7rem .9rem; border-radius: 6px; border: 1px solid rgba(255,255,255,.15);
-    cursor: pointer; transition: background .12s; font-size: .875rem; line-height: 1.55;
-    user-select: none;
-  }
-  .choice:hover:not(.locked) { background: rgba(200,146,42,.18); }
-  .choice.selected { background: rgba(200,146,42,.25); border-color: var(--gold); }
-  .choice.correct { background: var(--green-bg); border-color: #4ade80; }
-  .choice.incorrect { background: var(--red-bg); border-color: #f87171; }
-  .choice.show-correct { background: var(--green-bg); border-color: #4ade80; }
-  .choice .cl { font-weight: 700; color: var(--gold-light); min-width: 1.3rem; flex-shrink: 0; }
-  .choice.correct .cl, .choice.show-correct .cl { color: #4ade80; }
-  .choice.incorrect .cl { color: #f87171; }
-
-  .q-actions { display: flex; gap: .75rem; margin-top: 1.25rem; flex-wrap: wrap; }
-  .btn-submit, .btn-next, .btn-finish {
-    padding: .6rem 1.6rem; border-radius: 5px; border: none; font-weight: 700;
-    font-size: .82rem; cursor: pointer; letter-spacing: .05em; text-transform: uppercase; transition: all .15s;
-  }
-  .btn-submit { background: var(--gold); color: var(--navy); }
-  .btn-submit:hover { background: var(--gold-light); }
-  .btn-submit:disabled { opacity: .4; cursor: not-allowed; }
-  .btn-next, .btn-finish { background: rgba(255,255,255,.12); color: var(--gold-light); border: 1px solid rgba(200,146,42,.35); }
-  .btn-next:hover, .btn-finish:hover { background: rgba(200,146,42,.2); }
-
-  .explanation {
-    margin-top: 1.25rem; padding: 1rem 1.2rem; border-radius: 6px;
-    font-size: .85rem; line-height: 1.7; display: none;
-  }
-  .explanation.show { display: block; }
-  .explanation.correct-exp { background: rgba(20,83,45,.5); border: 1px solid #4ade80; color: #bbf7d0; }
-  .explanation.incorrect-exp { background: rgba(127,29,29,.5); border: 1px solid #f87171; color: #fecaca; }
-  .exp-verdict { font-weight: 700; font-size: .88rem; margin-bottom: .4rem; }
-  .exp-mpep { font-family: 'JetBrains Mono', monospace; font-size: .72rem; opacity: .8; margin-top: .6rem; }
-
-  /* ── RESULTS SCREEN ── */
-  #screen-results { display: none; }
-  .results-card { background: var(--navy); color: #dde7f5; border-radius: 10px; padding: 2.5rem; margin: 1.5rem 0; text-align: center; }
-  .results-score { font-family: 'EB Garamond', serif; font-size: 4rem; font-weight: 600; color: var(--gold); line-height: 1; }
-  .results-fraction { font-size: 1.1rem; color: var(--gold-light); margin: .5rem 0 1.5rem; }
-  .results-verdict { font-size: 1.05rem; margin-bottom: .5rem; }
-  .results-verdict.pass { color: #86efac; }
-  .results-verdict.fail { color: #fca5a5; }
-  .results-mpep { font-size: .82rem; color: #94a3b8; margin-top: .5rem; }
-
-  .review-list { margin: 1.5rem 0; }
-  .review-item {
-    background: var(--white); border: 1px solid var(--grey-200); border-radius: 6px;
-    padding: 1rem 1.25rem; margin: .6rem 0;
-  }
-  .review-item .ri-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: .4rem; }
-  .review-item .ri-q { font-size: .85rem; font-weight: 500; color: var(--navy); flex: 1; padding-right: 1rem; }
-  .ri-badge { font-size: .7rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; padding: .2rem .55rem; border-radius: 20px; white-space: nowrap; }
-  .ri-badge.correct { background: #dcfce7; color: var(--green); }
-  .ri-badge.incorrect { background: #fee2e2; color: var(--red); }
-  .ri-detail { font-size: .8rem; color: var(--grey-600); }
-  .ri-detail .mpep-ref { font-family: 'JetBrains Mono', monospace; font-size: .72rem; background: var(--grey-100); padding: .1rem .35rem; border-radius: 3px; }
-
-  .results-actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2rem; }
-  .btn-retry, .btn-hub { padding: .65rem 1.5rem; border-radius: 5px; font-weight: 700; font-size: .85rem; cursor: pointer; letter-spacing: .04em; text-transform: uppercase; transition: all .15s; }
-  .btn-retry { background: var(--gold); color: var(--navy); border: none; }
-  .btn-retry:hover { background: var(--gold-light); }
-  .btn-hub { background: var(--white); color: var(--navy); border: 1px solid var(--grey-200); }
-  .btn-hub:hover { border-color: var(--navy); }
-
-  @media (max-width: 768px) { .sidebar { display: none; } .main { margin-left: 0; padding: 1.5rem; } }
 </style>
 </head>
 <body>
-
-<nav class="topbar">
-  <div>
+  <div class="topbar">
     <div class="topbar-brand">USPTO Patent Practitioner Examination</div>
-    <div class="topbar-sub">Practice MCQ — Situational Fact Patterns</div>
+    <div class="topbar-sub">Practice MCQ Bank</div>
+    <nav class="topbar-nav">
+      <a href="index.html">Home</a>
+      <a href="quiz.html" class="active">Practice MCQ</a>
+    </nav>
   </div>
-  <div class="topbar-nav">
-    <a href="index.html">← Study Module</a>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="sidebar-heading">Resources</div>
+      <a class="sidebar-topic" href="index.html">Study Modules</a>
+      <a class="sidebar-topic active" href="quiz.html">Practice MCQ Bank</a>
+    </aside>
+    <main class="main">
+      <div id="screen-hub">
+        <div class="hub-header">
+          <div class="hub-meta">Practice</div>
+          <div class="hub-title">MCQ Bank</div>
+          <div class="hub-sub">Test your knowledge of USPTO Patent Bar topics. Select a topic to begin.</div>
+        </div>
+        <div id="quiz-app"></div>
+      </div>
+    </main>
   </div>
-</nav>
-
-<div class="layout">
-
-  <!-- SIDEBAR -->
-  <aside class="sidebar">
-    <div class="sidebar-heading">MCQ Topics</div>
-    <div id="sidebar-links"></div>
-  </aside>
-
-  <main class="main">
-
-    <!-- HUB -->
-    <div id="screen-hub">
-      <div class="hub-header">
-        <div class="hub-meta">Practice Examination</div>
-        <div class="hub-title">Multiple Choice Question Bank</div>
-        <div class="hub-sub">96 situational fact-pattern questions across all 12 examination topics — 8 per topic</div>
-      </div>
-
-      <div class="hub-stats">
-        <div class="hub-stat"><div class="n">96</div><div class="l">Total Questions</div></div>
-        <div class="hub-stat"><div class="n">12</div><div class="l">Topics</div></div>
-        <div class="hub-stat"><div class="n" id="stat-attempted">0</div><div class="l">Topics Attempted</div></div>
-        <div class="hub-stat"><div class="n" id="stat-best">—</div><div class="l">Best Score</div></div>
-      </div>
-
-      <div style="margin:1.5rem 0 .5rem;font-family:'EB Garamond',serif;font-size:1.35rem;color:var(--navy);border-bottom:1px solid var(--grey-200);padding-bottom:.4rem;">Select a Topic</div>
-      <p style="font-size:.875rem;color:var(--grey-600);margin-bottom:1rem;">Each quiz presents 8 situational fact patterns in exam format. Select your answer and submit to receive MPEP-anchored feedback. Aim for 7/8 (≥88%) before moving to the next topic.</p>
-      <div class="topic-grid" id="hub-grid"></div>
-    </div>
-
-    <!-- QUIZ -->
-    <div id="screen-quiz">
-      <div class="quiz-header">
-        <div class="quiz-meta" id="quiz-meta-label"></div>
-        <div class="quiz-title" id="quiz-title-label"></div>
-      </div>
-      <div class="progress-row">
-        <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
-        <div class="progress-label" id="progress-label"></div>
-      </div>
-      <div class="q-card">
-        <div class="q-top">
-          <div class="q-label" id="q-num-label"></div>
-          <div class="q-mpep" id="q-mpep-ref"></div>
-        </div>
-        <div class="q-scenario" id="q-scenario" style="display:none;"></div>
-        <div class="q-stem" id="q-stem"></div>
-        <div class="choices" id="q-choices"></div>
-        <div class="q-actions">
-          <button class="btn-submit" id="btn-submit" onclick="submitAnswer()" disabled>Submit Answer</button>
-          <button class="btn-next" id="btn-next" onclick="nextQuestion()" style="display:none;">Next Question →</button>
-          <button class="btn-finish" id="btn-finish" onclick="showResults()" style="display:none;">View Results</button>
-        </div>
-        <div class="explanation" id="q-explanation"></div>
-      </div>
-    </div>
-
-    <!-- RESULTS -->
-    <div id="screen-results">
-      <div class="quiz-header">
-        <div class="quiz-meta" id="res-meta-label"></div>
-        <div class="quiz-title" id="res-title-label"></div>
-      </div>
-      <div class="results-card">
-        <div class="results-score" id="res-score"></div>
-        <div class="results-fraction" id="res-fraction"></div>
-        <div class="results-verdict" id="res-verdict"></div>
-        <div class="results-mpep" id="res-mpep"></div>
-      </div>
-      <div style="font-family:'EB Garamond',serif;font-size:1.2rem;color:var(--navy);margin:1.5rem 0 .5rem;border-bottom:1px solid var(--grey-200);padding-bottom:.4rem;">Question Review</div>
-      <div class="review-list" id="review-list"></div>
-      <div class="results-actions">
-        <button class="btn-retry" onclick="retryTopic()">Retry This Topic</button>
-        <button class="btn-hub" onclick="goHub()">← All Topics</button>
-      </div>
-    </div>
-
-  </main>
-</div>
-
-<script>
-// ═══════════════════════════════════════════════════════
-//  QUESTION BANK
-// ═══════════════════════════════════════════════════════
-
-const TOPICS = [
-  {
-    id: 't1', num: 'Topic 1', title: 'Patent Law & the USPTO System', mpep: 'MPEP Ch. 100–200',
-    questions: [
-      {
-        mpep: 'MPEP § 201.04 / 35 U.S.C. § 154',
-        scenario: 'An inventor files a non-provisional utility patent application on 15 June 2023. The application claims priority to a provisional application filed on 14 June 2022. The patent is granted on 20 November 2025. No patent term adjustment applies.',
-        stem: 'What is the expiration date of the patent?',
-        choices: ['14 June 2042 — 20 years from the provisional filing date.','20 November 2042 — 17 years from the date of grant.','15 June 2043 — 20 years from the non-provisional filing date.','14 June 2037 — 15 years from the priority date, applicable to utility patents after the AIA.','20 November 2045 — 20 years from the date of grant.'],
-        correct: 2,
-        explanation: 'Under 35 U.S.C. §154(a)(2), a utility patent expires 20 years from the effective filing date of the earliest U.S. non-provisional application. The provisional application filing date is NOT the effective filing date for term purposes — provisionals do not mature into patents and cannot be the basis of term calculation. 20 years from 15 June 2023 = 15 June 2043. Answer C is correct.'
-      },
-      {
-        mpep: 'MPEP § 1503 / 35 U.S.C. § 173',
-        scenario: 'A designer files a design patent application on 1 April 2026 for the ornamental appearance of a new smartphone bezel. The application is granted on 15 September 2027.',
-        stem: 'What is the term of the design patent, and when does the first maintenance fee fall due?',
-        choices: ['14 years from the date of grant; no maintenance fees are required.','15 years from the date of grant; no maintenance fees are required.','20 years from the filing date; maintenance fees are due at 3.5, 7.5, and 11.5 years from grant.','15 years from the filing date; maintenance fees are due at 3.5 and 7.5 years from grant.','17 years from the date of grant; no maintenance fees are required.'],
-        correct: 1,
-        explanation: 'For design patent applications filed on or after 13 May 2015, the term is 15 years from the date of grant (Patent Law Treaties Implementation Act 2012). Design patents are not subject to maintenance fees — this distinguishes them from utility patents, which require fees at 3.5, 7.5 and 11.5 years from grant. The patent expires 15 September 2042. Answer B is correct. Answer A (14 years) was the old term for pre-PLTIA applications.'
-      },
-      {
-        mpep: 'MPEP § 1601 / 35 U.S.C. § 163',
-        scenario: 'A horticulturist has developed a new variety of rose bush that reproduces by cutting (asexual reproduction). The plant produces flowers of an unusual blue colour not previously observed in the wild or in cultivated varieties. The horticulturist seeks to protect the variety.',
-        stem: 'Which of the following statements regarding plant patent protection is correct?',
-        choices: ['A plant patent cannot be obtained for this variety because roses are not eligible subject matter under 35 U.S.C. §163.','A plant patent may be obtained because the variety is distinct and new and is asexually reproduced, other than by tuber propagation.','A plant patent has a term of 15 years from grant, like design patents, because both are non-utility patents.','A plant patent may not be obtained for any plant that already exists in cultivated form, even if the new variety has distinct characteristics.','A plant patent may only be obtained if the horticulturist also files a utility patent application covering the plant\'s genetic makeup.'],
-        correct: 1,
-        explanation: '35 U.S.C. §163 authorises plant patents for anyone who invents or discovers and asexually reproduces any distinct and new variety of plant, with two exceptions: tuber-propagated plants and plants found in an uncultivated state. Roses reproduced by cutting are within the statute. The term of a plant patent is 20 years from the filing date (same as utility patents), not 15 years. Answer B is correct.'
-      },
-      {
-        mpep: 'MPEP § 1702 / 37 C.F.R. § 11.5',
-        scenario: 'A biochemist with a PhD in molecular biology but no law degree wishes to represent a startup company before the USPTO in prosecuting a series of biotechnology patent applications. She has passed the USPTO registration examination.',
-        stem: 'Which of the following accurately describes her status and authority?',
-        choices: ['She may not represent others before the USPTO because she does not hold a law degree.','She is registered as a patent attorney and may represent others in all patent matters, including litigation.','She is registered as a patent agent and may represent others before the USPTO in patent prosecution, but may not represent clients in patent infringement litigation in federal court.','She may represent others before the USPTO only if she is supervised by a registered patent attorney.','She may represent the startup only if the startup executes a power of attorney naming her as counsel.'],
-        correct: 2,
-        explanation: 'A patent agent is a non-lawyer who has passed the USPTO registration examination and is registered to practise before the USPTO in patent prosecution matters. Patent agents may file and prosecute applications, respond to Office Actions, conduct examiner interviews, and appear before the PTAB on appeal. However, they may not engage in litigation (patent infringement suits) in federal court, which requires bar admission as an attorney. 37 C.F.R. §11.5 governs registration. Answer C is correct.'
-      },
-      {
-        mpep: 'MPEP § 1201 / 35 U.S.C. § 134',
-        scenario: 'An examiner has finally rejected all claims of a patent application. The applicant disagrees with the rejection and wishes to challenge the examiner\'s decision. The applicant has already filed one Request for Continued Examination (RCE).',
-        stem: 'Which body has jurisdiction to hear an appeal from the examiner\'s final rejection?',
-        choices: ['The U.S. District Court for the Eastern District of Virginia, which has exclusive jurisdiction over USPTO appeals.','The Court of Appeals for the Federal Circuit, which hears all appeals from USPTO examiners directly.','The Patent Trial and Appeal Board (PTAB), which hears appeals from applicants dissatisfied with examiner decisions.','The USPTO Director, who personally reviews all contested rejections.','The International Trade Commission, which has concurrent jurisdiction with the PTAB in patent prosecution matters.'],
-        correct: 2,
-        explanation: 'Appeals from examiner rejections are heard by the Patent Trial and Appeal Board (PTAB) under 35 U.S.C. §134 and MPEP Chapter 1200. After exhausting PTAB review, the applicant may appeal to either the U.S. District Court for the District of Columbia or the U.S. Court of Appeals for the Federal Circuit (not directly from the examiner). The ITC has no role in prosecution. Answer C is correct.'
-      },
-      {
-        mpep: 'MPEP § 200.02 / 35 U.S.C. § 111',
-        scenario: 'A patent practitioner is explaining the difference between provisional and non-provisional applications to a new client who has just conceived an invention.',
-        stem: 'Which of the following statements about provisional patent applications is accurate?',
-        choices: ['A provisional application must include at least one claim to obtain a filing date.','A provisional application establishes a priority date for up to 24 months, after which a non-provisional must be filed.','A provisional application is not examined and does not mature into a patent; it establishes a priority date for 12 months.','A provisional application, once filed, automatically converts to a non-provisional application if the inventor does not take action within 12 months.','A provisional application may claim the benefit of an earlier-filed provisional application under 35 U.S.C. §119(e).'],
-        correct: 2,
-        explanation: 'A provisional application under 35 U.S.C. §111(b) does not require claims and is never examined. It establishes a priority date that may be claimed by a corresponding non-provisional application filed within 12 months (not 24 months). The provisional lapses after 12 months — it does not automatically convert. A provisional cannot claim the benefit of another provisional. Answer C is correct.'
-      },
-      {
-        mpep: 'MPEP § 1893.03 / 35 U.S.C. § 371',
-        scenario: 'A practitioner is advising a client who filed a PCT application on 1 November 2024, claiming priority to a U.S. provisional filed on 2 November 2023. The client wishes to enter the U.S. national phase.',
-        stem: 'What is the deadline for U.S. national phase entry?',
-        choices: ['1 November 2026 — 24 months from the PCT filing date.','2 November 2025 — 12 months from the priority date.','2 May 2026 — 30 months from the priority date of 2 November 2023.','1 May 2027 — 42 months from the priority date, if a Chapter II demand was filed.','2 November 2026 — 36 months from the PCT filing date.'],
-        correct: 2,
-        explanation: 'Under 37 C.F.R. §1.495 and MPEP §1893.03, entry into the U.S. national phase must occur by 30 months from the earliest claimed priority date. The earliest priority date here is the provisional filing date of 2 November 2023. 30 months from 2 November 2023 = 2 May 2026. Note that filing a Chapter II demand does not extend the 30-month deadline for U.S. national phase entry (unlike some other jurisdictions). Answer C is correct.'
-      },
-      {
-        mpep: 'MPEP § 101 / 37 C.F.R. § 1.14',
-        scenario: 'A journalist contacts the USPTO seeking access to a pending patent application that was filed 14 months ago. The applicant has not made any request for early publication, and the application has not been published.',
-        stem: 'Under what circumstances may the pending application be accessible to the public?',
-        choices: ['Pending U.S. applications are always publicly available 12 months after filing.','The application is accessible because it has been pending for more than 12 months.','Pending U.S. applications are generally not open to public inspection unless the application has been published (typically 18 months from the priority date) or patented.','The journalist may obtain access by submitting a Freedom of Information Act request to the USPTO.','The application is open to inspection because the applicant has not requested confidentiality.'],
-        correct: 2,
-        explanation: 'Under 35 U.S.C. §122 and 37 C.F.R. §1.14, pending U.S. patent applications are confidential and not open to public inspection unless and until they are published (typically 18 months from the earliest effective filing or priority date) or a patent is granted. An application filed 14 months ago would not yet be published unless the applicant requested early publication. FOIA does not override patent application confidentiality. Answer C is correct.'
-      }
-    ]
-  },
-  {
-    id: 't2', num: 'Topic 2', title: 'Patentable Subject Matter — §101', mpep: 'MPEP § 2100–2107',
-    questions: [
-      {
-        mpep: 'MPEP § 2106.04(a) / Alice Corp.',
-        scenario: 'An applicant claims: "A computerised method of managing a hedging transaction, comprising: identifying a market risk associated with a financial position; calculating a hedge value using an algorithm; and storing the calculated hedge value in a computer database." The examiner rejects under §101.',
-        stem: 'Under the Alice/Mayo framework as codified in MPEP §2106, what is the most accurate analysis of the claim?',
-        choices: ['The claim fails Step 1 because it does not recite a process, machine, manufacture or composition of matter.','The claim satisfies §101 because it is implemented on a computer, which constitutes a specific machine.','The claim is directed to an abstract idea (the concept of hedging financial risk). The additional elements — performing the method on a generic computer and storing data in a database — are well-understood, routine, conventional activities that do not integrate the exception into a practical application. The claim is therefore not patent-eligible.','The claim is directed to an abstract idea but is patent-eligible because it produces a useful, concrete and tangible result.','The claim is not directed to any judicial exception and is therefore patent-eligible under Step 2A Prong 1.'],
-        correct: 2,
-        explanation: 'Applying the Alice/Mayo two-step: (Step 2A Prong 1) the claim is directed to the abstract idea of hedging financial risk — a fundamental economic concept. (Step 2A Prong 2) the additional elements (computer implementation, database storage) amount only to well-understood, routine, conventional computer activity. Implementing an abstract idea on a generic computer does not integrate the exception into a practical application. The "useful, concrete and tangible result" test was explicitly rejected by the Federal Circuit and superseded by Alice. Answer C is correct.'
-      },
-      {
-        mpep: 'MPEP § 2106.04(b) / Mayo v. Prometheus',
-        scenario: 'A pharmaceutical company claims: "A method of optimising therapeutic efficacy for treatment of an immune-mediated gastrointestinal disorder, comprising: administering a drug to a subject; determining a metabolite level in the subject; and wherein a metabolite level below 230 pmol per 8×10⁸ red blood cells indicates a need to increase the drug dosage." The claim is based on the correlation between metabolite levels and therapeutic response — a naturally occurring relationship.',
-        stem: 'Which of the following most accurately reflects the §101 analysis?',
-        choices: ['The claim is eligible because it recites specific steps of administering a drug and measuring metabolite levels, which are physical, practical steps beyond the natural correlation.','The claim is not eligible under §101 because it fails to recite a specific machine.','The claim is directed to a law of nature (the correlation between metabolite levels and therapeutic response). The additional steps of administering the drug and determining the metabolite level are conventional in the field of gastroenterology and do not amount to significantly more than the natural law itself.','The claim is eligible because pharmaceutical method claims are categorically exempt from §101 analysis under the machine-or-transformation test.','The claim fails Step 1 because it is directed to a mental process.'],
-        correct: 2,
-        explanation: 'This is closely analogous to Mayo v. Prometheus, 566 U.S. 66 (2012). The correlation between metabolite levels and therapeutic efficacy is a law of nature. The additional steps (administering the drug, measuring the metabolite) are well-understood, routine, conventional medical steps that were already known in the art. They do not add an "inventive concept" sufficient to transform the claim into a patent-eligible application of the natural law. The machine-or-transformation test is not a categorical rule. Answer C is correct.'
-      },
-      {
-        mpep: 'MPEP § 2105 / Myriad Genetics',
-        scenario: 'A research institute has isolated the BRCA1 gene from a human chromosome. The institute also created cDNA corresponding to the BRCA1 coding sequence by reverse-transcribing mRNA. The institute claims both the isolated BRCA1 genomic DNA and the cDNA.',
-        stem: 'Under Association for Molecular Pathology v. Myriad Genetics, which of the following claims is patent-eligible?',
-        choices: ['Both the isolated genomic BRCA1 DNA and the cDNA are eligible because both required significant laboratory work to isolate and create.','Neither the isolated genomic BRCA1 DNA nor the cDNA is eligible because both are derived from naturally occurring sequences.','The isolated genomic BRCA1 DNA is eligible because isolation from the chromosome changes its chemical structure. The cDNA is not eligible because it mirrors the natural coding sequence.','Neither the isolated genomic DNA nor the cDNA is eligible because they constitute natural phenomena under §101.','The cDNA is eligible because it is not found in nature — it is synthetically created and does not include introns. The isolated genomic BRCA1 DNA is not eligible because it represents a naturally occurring segment.'],
-        correct: 4,
-        explanation: 'In Myriad Genetics (2013), the Supreme Court held that isolated naturally occurring DNA sequences are products of nature not eligible under §101 — the act of isolation does not make them patent-eligible even though it requires significant effort. However, cDNA — which is synthetically created by reverse-transcribing mRNA and therefore lacks the introns present in genomic DNA — does not occur naturally and is therefore patent-eligible subject matter. Answer E is correct.'
-      },
-      {
-        mpep: 'MPEP § 2107.01',
-        scenario: 'An applicant claims a chemical compound with a specific molecular structure. The specification states that the compound "may be useful" in treating cancer but provides no experimental data and no explanation of the mechanism by which the compound would produce a therapeutic effect. The examiner rejects the claim for failure to satisfy the utility requirement.',
-        stem: 'Which of the following best describes the applicable utility standard and whether the rejection is proper?',
-        choices: ['The rejection is improper; it is sufficient that the compound has a molecular structure that could potentially interact with cancer cells.','The utility requirement is satisfied by identifying any theoretical use, however speculative. The rejection is improper.','The utility requirement requires that the claimed utility be specific, substantial and credible. An assertion that a compound "may be useful" without supporting data or a credible mechanism does not satisfy this standard. The rejection is proper.','The utility requirement under §101 only applies to process claims, not composition of matter claims. The rejection is improper.','The rejection is improper because chemical compounds cannot be rejected for lack of utility unless they are proven to be harmful.'],
-        correct: 2,
-        explanation: 'MPEP §2107 codifies the requirement that claimed utility must be specific (not a general assertion), substantial (of real-world value, not merely theoretical), and credible (believable to a person of ordinary skill in the art). A bare assertion that a compound "may be useful" without experimental support or a credible mechanism does not satisfy the credibility prong, particularly in unpredictable arts like drug development. The examiner\'s rejection is proper. Answer C is correct.'
-      },
-      {
-        mpep: 'MPEP § 2106.05(a)',
-        scenario: 'A software company claims: "A system for routing emergency service calls, comprising: a network interface configured to receive call data including caller location; a processor configured to apply an algorithm to identify the nearest available emergency response unit; and a display unit showing the routing result." The examiner argues the claim is directed to an abstract idea.',
-        stem: 'Under Step 2A Prong 2 of the USPTO eligibility framework, which analysis is most appropriate?',
-        choices: ['The claim is not eligible because it relies on a processor and algorithm, which are per se abstract.','The claim is directed to an abstract idea (routing data) but the additional elements — network interface, processor, and display configured for a specific emergency routing function — integrate the exception into a practical application by improving the functioning of a technical system. The claim is likely eligible.','The claim is eligible because any claim that recites a physical machine (processor, display) automatically satisfies §101.','The claim is not eligible because routing algorithms are categorically excluded from patent protection after Alice.','The claim fails Step 1 because a system for routing calls is not a process, machine, manufacture or composition of matter.'],
-        correct: 1,
-        explanation: 'Under Step 2A Prong 2, even if a claim recites a judicial exception, it may be eligible if the additional elements integrate the exception into a practical application — for example, by improving the technical function of the system itself. Here, the claim is directed to a specific technical implementation of emergency call routing that applies the algorithm to a particular real-world problem with a configured hardware system. This is distinguishable from claims that merely apply an abstract idea on a generic computer. Answer B is correct.'
-      },
-      {
-        mpep: 'MPEP § 2106.03',
-        scenario: 'An applicant claims: "A method comprising: receiving, by a server, a data input; and transmitting, by the server, the data input to a remote device." The examiner considers whether Step 1 of the eligibility analysis is satisfied.',
-        stem: 'Under Step 1 of the USPTO §101 framework, how should the examiner classify this claim?',
-        choices: ['The claim falls within the "machine" category because it recites a server.','The claim falls within the "process" category because it recites a series of steps (receiving and transmitting) performed by a server.','The claim does not fall within any statutory category and should be rejected under Step 1.','The claim falls within the "manufacture" category because electronic signals are manufactured products.','The claim should be classified as a composition of matter because data is a substance.'],
-        correct: 1,
-        explanation: 'Under MPEP §2106.03, Step 1 asks whether the claim falls within one of the four statutory categories: process, machine, manufacture or composition of matter. A method claim — even one performed by a computer — recites a series of steps and therefore falls within the "process" category. Step 1 is satisfied. The eligibility analysis then proceeds to Step 2A. Answer B is correct. Note that satisfying Step 1 does not mean the claim is eligible — it merely means analysis continues.'
-      },
-      {
-        mpep: 'MPEP § 2106.04(c)',
-        scenario: 'An applicant claims a mathematical formula for calculating the optimal curing time for rubber based on temperature, time, and other variables. The claim is worded as a process claim but essentially captures the formula itself.',
-        stem: 'Which of the following best describes the eligibility analysis for a claim that essentially encompasses a mathematical formula?',
-        choices: ['Mathematical formulas are eligible under §101 because they represent a process.','A claim that wholly preempts a mathematical formula is not patent-eligible, as mathematical formulas are a form of abstract idea and a law of nature. If the claim would effectively prevent all uses of the formula, it is not eligible regardless of how it is drafted.','Mathematical formula claims are eligible so long as they recite at least one physical step, such as applying the formula in a physical process.','Claims directed to mathematical formulas are per se eligible because they produce specific, tangible results.','A mathematical formula is a natural phenomenon under §101 and is only eligible if it is isolated from all other materials.'],
-        correct: 1,
-        explanation: 'Mathematical formulas and relationships are abstract ideas (or in some cases laws of nature) under §101 — Gottschalk v. Benson (1972) established this. A claim that in effect wholly preempts use of a mathematical formula lacks eligibility. However, after Diehr (1981), a claim that applies a formula to a specific physical process in a non-conventional way may be eligible. The key issue is whether the claim scope effectively monopolises the formula itself. Answer B is correct. Answer C is too broad — not every physical step is sufficient to confer eligibility.'
-      },
-      {
-        mpep: 'MPEP § 2106.07(a)',
-        scenario: 'An examiner has rejected claims 1-10 under 35 U.S.C. §101, asserting that they are directed to an abstract idea of "collecting and analysing data." The applicant disagrees and wishes to respond.',
-        stem: 'Under USPTO guidance in MPEP §2106, what is the examiner\'s burden in making a §101 rejection, and what must the applicant do to overcome it?',
-        choices: ['The examiner need only state "abstract idea" in the rejection; the burden then shifts entirely to the applicant to prove eligibility.','The examiner must provide a reasoned explanation identifying the specific abstract idea to which the claim is directed, supported by the claim language. The applicant may rebut by demonstrating that the claim as a whole integrates the exception into a practical application, or by amending claims to add eligible subject matter.','The applicant has no burden to overcome a §101 rejection — only §102 and §103 rejections require a response.','The examiner must identify prior art showing that the abstract idea was previously patented before the rejection is proper.','A §101 rejection can only be overcome by amending claims; arguments alone are never sufficient.'],
-        correct: 1,
-        explanation: 'MPEP §2106.07(a) sets out the examiner\'s burden: the examiner must provide a reasoned rejection that identifies the specific judicial exception and explains why the claim is directed to it. A conclusory label such as "abstract idea" without analysis is insufficient. In response, the applicant may argue that the claim does not recite a judicial exception (Prong 1), that it integrates the exception into a practical application (Prong 2), or that it adds significantly more (Step 2B). Arguments alone can overcome a §101 rejection — amendment is not always required. Answer B is correct.'
-      }
-    ]
-  },
-  {
-    id: 't3', num: 'Topic 3', title: 'Novelty — 35 U.S.C. §102', mpep: 'MPEP § 2131–2159',
-    questions: [
-      {
-        mpep: 'MPEP § 2152.02(a) / AIA §102(a)(1)',
-        scenario: 'Inventor B files a patent application on 1 October 2025. Prior to filing, the following events occurred: (1) a third-party researcher published a paper describing the identical invention on 5 October 2024 — 361 days before B\'s filing; (2) Inventor B publicly demonstrated the invention at a trade show on 1 October 2024 — exactly 365 days before filing.',
-        stem: 'Which of the following correctly characterises these disclosures under AIA §102?',
-        choices: ['Both disclosures are excused by the one-year grace period because both occurred within one year of filing.','The third-party paper is prior art because it was made by someone other than the inventor. The inventor\'s own trade show demonstration is not prior art because it occurred exactly 365 days before filing and falls within the §102(b)(1)(A) grace period.','Both disclosures are prior art because neither is dated within 12 months of filing.','The inventor\'s trade show demonstration is prior art under §102(a)(1) and cannot be excused. The third-party paper is excused because the inventor demonstrated the invention first.','Neither disclosure is prior art because public demonstrations and academic papers are not listed in §102(a)(1).'],
-        correct: 1,
-        explanation: 'Under AIA §102(b)(1)(A), a disclosure made one year or less before the effective filing date is not prior art if made by the inventor. "One year or less" means the disclosure date must be no earlier than one year (365 days) before filing. The inventor\'s demonstration was exactly 365 days before — it is within the grace period and excused. The third-party paper (361 days before) is within one year of filing BUT the §102(b)(1) grace period does not protect independent third-party disclosures — they remain prior art under §102(a)(1). Answer B is correct.'
-      },
-      {
-        mpep: 'MPEP § 2154.01 / AIA §102(b)(2)',
-        scenario: 'Company X files a patent application (Application X) on 1 March 2024. Company Y, which is wholly owned by the same parent corporation as Company X, files a patent application (Application Y) on 1 January 2024 — two months before Application X. Application Y describes the same invention claimed in Application X. Both companies were under a common obligation of assignment to the parent at the time Application Y was filed.',
-        stem: 'Is Application Y prior art to Application X under AIA §102(a)(2)?',
-        choices: ['Yes. Application Y is prior art to Application X under §102(a)(2) because it was effectively filed before Application X and names different inventors.','No. Application Y is not prior art to Application X because both applications were filed in the same year.','Application Y is prior art under §102(a)(2) because it was filed before Application X, but the §102(b)(2)(C) exception applies because both applications were commonly owned at the time of the earlier disclosure. Application Y is therefore not prior art against Application X.','Application Y is not prior art because patent applications are never prior art until they are published.','Application Y would only be prior art if it was published before Application X was filed.'],
-        correct: 2,
-        explanation: 'Under AIA §102(a)(2), an earlier-filed application naming another inventor is prior art (so-called "secret prior art"). However, §102(b)(2)(C) creates an exception: the earlier application is not prior art if the subject matter disclosed and the claimed invention were, not later than the effective filing date of the claimed invention, owned by the same person or subject to an obligation of assignment to the same person. Because both companies were commonly owned (through the parent) at the time of the disclosure, the §102(b)(2)(C) exception applies and Application Y is not prior art. Answer C is correct.'
-      },
-      {
-        mpep: 'MPEP § 2131 / Anticipation',
-        scenario: 'A prior art reference discloses a composition comprising compounds A and B in a ratio of 1:1. The applicant claims a composition comprising compounds A and B "in a ratio of about 1:1 to about 2:1." The examiner asserts that the prior art reference anticipates the claim.',
-        stem: 'Is the examiner\'s anticipation rejection proper?',
-        choices: ['No. Anticipation requires that every element of the claim be disclosed in a single reference. Since the prior art discloses only the 1:1 ratio and the claim includes a range extending to 2:1, the prior art does not disclose every element of the claim.','Yes. Because the prior art discloses the 1:1 ratio, and 1:1 falls within the claimed range of "about 1:1 to about 2:1," the prior art anticipates the claim. A prior art disclosure that falls within a claimed range anticipates the claim.','No. A prior art reference that discloses a specific point within a claimed range can only support an obviousness rejection under §103, not an anticipation rejection under §102.','Yes, but only if the prior art reference also expressly discloses the 2:1 end of the range.','No. A range claim can never be anticipated by a prior art reference that discloses a single point within the range.'],
-        correct: 1,
-        explanation: 'Under longstanding Federal Circuit precedent codified in MPEP §2131.03, a prior art reference that discloses a specific value within a claimed range anticipates the claim. The prior art\'s 1:1 ratio falls within the claimed range of "about 1:1 to about 2:1." Therefore, the prior art anticipates the claim — every element (compounds A and B, in a ratio encompassed by the claim) is disclosed in the single reference. Answer B is correct. This is a critical distinction from the rule that a range claim cannot be anticipated by a different range not overlapping with it.'
-      },
-      {
-        mpep: 'MPEP § 2131.01 / Inherent Anticipation',
-        scenario: 'A prior art reference discloses a process for manufacturing a steel alloy by combining iron with carbon at a specific temperature. The applicant claims the same process but adds the limitation "wherein the resulting alloy has a Rockwell hardness of at least 60 HRC." The examiner asserts that when the disclosed process is carried out, the resulting alloy necessarily has a Rockwell hardness of at least 60 HRC, even though this property was never mentioned in the prior art.',
-        stem: 'Under the doctrine of inherent disclosure, may the prior art reference anticipate the claim?',
-        choices: ['No. A claim element can only be anticipated if it is expressly stated in the prior art. Inherent disclosure cannot be the basis for anticipation.','Yes. If carrying out the prior art process necessarily and inevitably produces an alloy with the claimed hardness — even though that property was not recognized or mentioned in the prior art — the property is inherently disclosed and the claim is anticipated.','Yes, but only if the applicant admits in the specification that the prior art process produces the claimed hardness.','No. Inherent disclosure applies only to method claims, not to product-by-process claims or composition claims.','Yes, but the examiner must establish inherent disclosure by showing that the property would be probable, though not necessarily inevitable, in the prior art process.'],
-        correct: 1,
-        explanation: 'Under MPEP §2131.01, inherent anticipation applies when a prior art reference necessarily and inevitably produces the claimed result or possesses the claimed property, even if that result or property was not recognised or disclosed in the reference. The standard is necessity — not probability or possibility. If the prior art process always produces the claimed hardness level when carried out, the hardness is inherently disclosed and the claim is anticipated. Answer B is correct. Answer E misstates the standard — "probable" is insufficient.'
-      },
-      {
-        mpep: 'MPEP § 2152.01 / AIA Effective Date',
-        scenario: 'A practitioner is analysing prior art for a patent application with an effective filing date of 10 March 2013.',
-        stem: 'Which version of §102 applies to this application, and what is the significance of the 16 March 2013 threshold?',
-        choices: ['AIA §102 applies because the application was filed in 2013, after the AIA was enacted in 2011.','Pre-AIA §102 applies because the effective filing date is before 16 March 2013 — the date on which AIA §102 first applies to applications. This application is governed by the old first-to-invent rules.','The practitioner must apply both pre-AIA and AIA §102 simultaneously and choose the more favorable version.','AIA §102 applies to all applications regardless of filing date because the AIA amended the entire Patent Act.','Pre-AIA §102 applies only if the applicant specifically elects it in the specification.'],
-        correct: 1,
-        explanation: 'MPEP §2151 explains that AIA §102 applies to any application whose effective filing date is on or after 16 March 2013. An application with an effective filing date of 10 March 2013 — six days before the threshold — is governed by pre-AIA §102, including the first-to-invent priority system and the §102(b) one-year prior art date measured from the application filing date (not from the disclosure date as under AIA). Answer B is correct. This date is frequently tested on the Patent Bar.'
-      },
-      {
-        mpep: 'MPEP § 2133 / Pre-AIA On-Sale Bar',
-        scenario: 'Under pre-AIA §102(b), an inventor sold 50 units of the claimed invention on 15 January 2009 to a commercial customer in an arms-length transaction. The invention was fully reduced to practice and was ready for patenting at the time of the sale. The inventor filed a patent application on 20 January 2010.',
-        stem: 'Is the invention barred under pre-AIA §102(b)?',
-        choices: ['No. The on-sale bar under pre-AIA §102(b) only applies to third-party sales, not to sales made by the inventor.','No. Pre-AIA §102(b) requires that a sale occur more than one year before filing to create a bar. The sale on 15 January 2009 is more than one year before the 20 January 2010 filing date, so the bar applies — but only to the claims directed to the sold embodiment.','Yes. The sale on 15 January 2009 occurred more than one year before the 20 January 2010 filing date (by 5 days). The invention was ready for patenting and was the subject of a commercial offer for sale. The pre-AIA §102(b) bar applies and the invention is not patentable.','No. The on-sale bar only applies when the sale is made to a member of the general public, not to a single commercial customer.','Yes, but the bar can be overcome by proving that the sale was experimental in nature.'],
-        correct: 2,
-        explanation: 'Under pre-AIA §102(b), an invention is barred if it was "on sale in this country more than one year prior to the date of the application." The sale of 15 January 2009 occurred exactly 370 days (more than one year) before the 20 January 2010 filing. The two-part Pfaff test (the invention was the subject of a commercial offer for sale; and the invention was ready for patenting) is satisfied. The bar applies to inventor sales as well as third-party sales. The "experimental use" exception might negate the bar, but the facts state the sale was commercial. Answer C is correct.'
-      },
-      {
-        mpep: 'MPEP § 2131.02 / Anticipation — Multiple References',
-        scenario: 'An examiner wishes to reject a claim under 35 U.S.C. §102. Reference A discloses elements 1, 2, and 3 of the claim. Reference B discloses element 4. No single reference discloses all four elements.',
-        stem: 'May the examiner combine References A and B to support an anticipation rejection under §102?',
-        choices: ['Yes. §102 allows the examiner to combine multiple references to show that every element of the claim was known in the prior art.','No. Anticipation under §102 requires that every element of the claim be found in a single prior art reference. Combining two references to meet all claim elements is a §103 obviousness analysis, not a §102 anticipation analysis.','Yes, but only if References A and B are in the same field of technology.','Yes, if the examiner expressly states that References A and B are "incorporated by reference" into each other.','No, unless the applicant specifically objects to the use of multiple references.'],
-        correct: 1,
-        explanation: 'Anticipation under §102 is a "single reference" doctrine: every element of the claim must be disclosed in a single prior art reference to sustain an anticipation rejection. Combining two or more references to collectively disclose all claim elements is the domain of §103 obviousness, not §102 anticipation. The examiner in this scenario would need to frame the rejection as a §103 obviousness rejection, providing a reason to combine References A and B. Answer B is correct.'
-      },
-      {
-        mpep: 'MPEP § 2153.02 / AIA §102(b)(1)(B)',
-        scenario: 'Inventor C discloses her invention in a journal article on 1 June 2024. Six months later, on 1 December 2024, a third party — unaware of C\'s disclosure — independently publishes a paper describing the same invention. Inventor C then files a patent application on 1 April 2025.',
-        stem: 'Under AIA §102, is the third party\'s December 2024 paper prior art against Inventor C\'s April 2025 application?',
-        choices: ['Yes. The third-party paper was published more than one year before C\'s filing date, so the grace period does not apply.','Yes. The §102(b)(1) grace period does not protect against independent third-party disclosures, so the December 2024 paper is prior art.','No. Under §102(b)(1)(B), a third-party disclosure made after the inventor\'s own public disclosure is not prior art, provided the inventor files within one year of their own disclosure. C\'s June 2024 journal article triggered a one-year window, and the third-party paper appeared after C\'s own disclosure.','No, but only if C can prove that the third party derived the invention from her journal article.','Yes. The third-party paper is prior art because it was published by someone other than the inventor.'],
-        correct: 2,
-        explanation: 'AIA §102(b)(1)(B) provides that a disclosure is not prior art if the subject matter disclosed "had, before such disclosure, been publicly disclosed by the inventor or a joint inventor." This "prior public disclosure" grace period means that once an inventor publicly discloses their invention, subsequent independent third-party disclosures of the same subject matter are disqualified as prior art, provided the inventor files within one year of their own disclosure. C\'s June 2024 disclosure preceded the third-party paper, and C filed in April 2025 — within one year of her own disclosure. The third-party paper is not prior art. Answer C is correct.'
-      }
-    ]
-  },
-  {
-    id: 't4', num: 'Topic 4', title: 'Non-Obviousness — §103', mpep: 'MPEP § 2141–2145',
-    questions: [
-      {
-        mpep: 'MPEP § 2141 / Graham v. John Deere',
-        scenario: 'An examiner is preparing a §103 obviousness rejection for a patent application directed to a new type of bicycle brake. The examiner has identified two prior art references: Reference A shows the brake mechanism, and Reference B shows a bicycle application in the same field. The examiner must conduct the Graham analysis.',
-        stem: 'Which of the following correctly identifies the four Graham v. John Deere factual inquiries in their proper order?',
-        choices: ['(1) commercial success of the invention; (2) scope and content of the prior art; (3) differences between the prior art and the claim; (4) level of ordinary skill in the art.','(1) scope and content of the prior art; (2) differences between the prior art and the claims; (3) level of ordinary skill in the pertinent art; (4) secondary considerations (objective indicia of non-obviousness).','(1) level of ordinary skill in the art; (2) scope and content of the prior art; (3) secondary considerations; (4) differences between the prior art and the claims.','(1) differences between the prior art and the claims; (2) scope and content of the prior art; (3) commercial success; (4) level of ordinary skill in the art.','(1) scope and content of the prior art; (2) commercial success; (3) level of ordinary skill in the art; (4) differences between the prior art and the claims.'],
-        correct: 1,
-        explanation: 'Graham v. John Deere Co., 383 U.S. 1 (1966) established the four factual inquiries underlying every §103 determination: (1) scope and content of the prior art; (2) differences between the prior art and the claims at issue; (3) level of ordinary skill in the pertinent art; and (4) secondary considerations (objective indicia of non-obviousness) such as commercial success, long-felt need, and failure of others. These are factual findings; the ultimate conclusion of obviousness is a legal question. Answer B is correct.'
-      },
+  <script src="script.js"></script>
+</body>
+</html>
       {
         mpep: 'MPEP § 2143 / KSR',
         scenario: 'An examiner combines two prior art references to reject a claim as obvious under §103. Reference A teaches a catalytic converter for automobile exhaust. Reference B teaches a different type of filter used in industrial settings. The examiner states: "A POSITA would have been motivated to combine References A and B because both deal with filtration and because combining them would yield predictable results — a more efficient converter." The applicant argues that the references are from different fields.',
@@ -1246,11 +854,12 @@ function renderQuestion() {
 
   const choicesEl = document.getElementById('q-choices');
   const letters = ['A','B','C','D','E'];
-  choicesEl.innerHTML = q.choices.map((c, i) => `
-    <div class="choice" id="choice-${i}" onclick="selectChoice(${i})">
-      <span class="cl">${letters[i]}.</span>
-      <span>${c}</span>
-    </div>`).join('');
+  choicesEl.innerHTML = q.choices.map((c, i) => {
+    return '<div class="choice" id="choice-' + i + '" onclick="selectChoice(' + i + ')">' +
+      '<span class="cl">' + letters[i] + '.</span>' +
+      '<span>' + c + '</span>' +
+    '</div>';
+  }).join('');
 
   // actions
   document.getElementById('btn-submit').disabled = true;
@@ -1380,6 +989,6 @@ function show(id) {
 }
 
 window.addEventListener('DOMContentLoaded', init);
-</script>
 </body>
+<script src="script.js"></script>
 </html>

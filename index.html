@@ -53,274 +53,7 @@
   .topbar-brand { font-family: 'EB Garamond', serif; font-size: 1.15rem; font-weight: 600; letter-spacing: .03em; }
   .topbar-sub { font-size: .75rem; color: var(--gold-light); letter-spacing: .05em; text-transform: uppercase; }
 
-  /* ─── LAYOUT ─── */
-  .layout { display: flex; margin-top: 56px; min-height: calc(100vh - 56px); }
-
-  /* ─── SIDEBAR ─── */
-  .sidebar {
-    width: var(--sidebar-w);
-    min-width: var(--sidebar-w);
-    background: var(--navy-mid);
-    color: #c9d8eb;
-    position: fixed;
-    top: 56px;
-    bottom: 0;
-    overflow-y: auto;
-    font-size: .825rem;
-    scrollbar-width: thin;
-    scrollbar-color: var(--navy-light) transparent;
-  }
-  .sidebar::-webkit-scrollbar { width: 4px; }
-  .sidebar::-webkit-scrollbar-thumb { background: var(--navy-light); border-radius: 2px; }
-
-  .sidebar-section { border-bottom: 1px solid rgba(255,255,255,.08); }
-  .sidebar-heading {
-    padding: .65rem 1.25rem;
-    font-size: .65rem;
-    text-transform: uppercase;
-    letter-spacing: .1em;
-    color: var(--gold-light);
-    font-weight: 600;
-  }
-  .sidebar a {
-    display: block;
-    padding: .55rem 1.25rem .55rem 1.5rem;
-    color: #b0c4de;
-    text-decoration: none;
-    border-left: 3px solid transparent;
-    transition: all .15s;
-    line-height: 1.4;
-  }
-  .sidebar a:hover, .sidebar a.active {
-    background: rgba(200,146,42,.12);
-    color: var(--gold-light);
-    border-left-color: var(--gold);
-  }
-  .sidebar a.active { font-weight: 600; }
-
-  /* ─── MAIN ─── */
-  .main {
-    margin-left: var(--sidebar-w);
-    flex: 1;
-    padding: 2.5rem 3rem 4rem;
-    max-width: calc(var(--content-max) + 6rem);
-  }
-
-  /* ─── PAGES ─── */
-  .page { display: none; }
-  .page.active { display: block; }
-
-  /* ─── TOPIC HEADER ─── */
-  .topic-header {
-    border-bottom: 3px solid var(--gold);
-    margin-bottom: 2rem;
-    padding-bottom: 1rem;
-  }
-  .topic-meta {
-    font-size: .7rem;
-    text-transform: uppercase;
-    letter-spacing: .1em;
-    color: var(--gold);
-    font-weight: 600;
-    margin-bottom: .35rem;
-  }
-  .topic-title {
-    font-family: 'EB Garamond', serif;
-    font-size: 2rem;
-    font-weight: 600;
-    color: var(--navy);
-    line-height: 1.25;
-  }
-  .topic-subtitle { font-size: .9rem; color: var(--grey-600); margin-top: .4rem; }
-
-  /* ─── SECTION HEADINGS ─── */
-  h2 {
-    font-family: 'EB Garamond', serif;
-    font-size: 1.45rem;
-    color: var(--navy);
-    margin: 2.5rem 0 .75rem;
-    padding-bottom: .4rem;
-    border-bottom: 1px solid var(--grey-200);
-  }
-  h3 {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 1rem;
-    font-weight: 600;
-    color: var(--navy-mid);
-    margin: 1.75rem 0 .5rem;
-    letter-spacing: .01em;
-  }
-  h4 {
-    font-size: .9rem;
-    font-weight: 600;
-    color: var(--grey-800);
-    margin: 1.25rem 0 .4rem;
-    text-transform: uppercase;
-    letter-spacing: .07em;
-  }
-
-  p { margin-bottom: 1rem; font-size: .95rem; }
-
-  /* ─── BOXES ─── */
-  .box {
-    border-radius: 6px;
-    padding: 1.25rem 1.5rem;
-    margin: 1.5rem 0;
-    font-size: .9rem;
-  }
-  .box-outcomes { background: var(--navy); color: #e8f0fb; border-left: 4px solid var(--gold); }
-  .box-outcomes h3 { color: var(--gold-light); margin-top: 0; }
-  .box-outcomes li { margin: .4rem 0 .4rem 1.2rem; line-height: 1.6; }
-
-  .box-reading { background: var(--gold-pale); border-left: 4px solid var(--gold); }
-  .box-reading h3 { color: var(--navy); margin-top: 0; }
-  .box-reading .reading-label { font-size: .7rem; text-transform: uppercase; letter-spacing: .08em; font-weight: 600; color: var(--gold); margin: .85rem 0 .3rem; }
-  .box-reading li { margin: .3rem 0 .3rem 1.2rem; font-size: .875rem; line-height: 1.55; }
-  .box-reading .mpep-ref { font-family: 'JetBrains Mono', monospace; font-size: .78rem; background: rgba(200,146,42,.15); padding: .1rem .35rem; border-radius: 3px; color: var(--navy); }
-
-  .box-note { background: #eef3fa; border-left: 4px solid var(--navy-light); color: var(--grey-800); }
-  .box-warn { background: #fdf5e6; border-left: 4px solid var(--gold); }
-  .box-case { background: var(--cream); border: 1px solid var(--grey-200); border-top: 3px solid var(--navy-light); }
-  .box-case .case-name { font-family: 'EB Garamond', serif; font-size: 1.05rem; font-weight: 600; color: var(--navy); }
-  .box-case .case-cite { font-size: .78rem; color: var(--grey-400); font-family: 'JetBrains Mono', monospace; }
-
-  /* ─── STATUTE CALLOUT ─── */
-  .statute {
-    border: 1px solid var(--grey-200);
-    border-left: 4px solid var(--navy);
-    background: var(--white);
-    padding: 1rem 1.25rem;
-    margin: 1.25rem 0;
-    border-radius: 4px;
-    font-size: .875rem;
-  }
-  .statute-label { font-size: .68rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--navy-light); margin-bottom: .4rem; }
-  .statute-text { font-family: 'EB Garamond', serif; font-style: italic; font-size: .95rem; line-height: 1.6; color: var(--grey-800); }
-
-  /* ─── EXAM QUESTION ─── */
-  .exam-q {
-    background: var(--navy);
-    color: #e8f0fb;
-    border-radius: 8px;
-    padding: 1.5rem;
-    margin: 2rem 0;
-  }
-  .exam-q-label { font-size: .68rem; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--gold-light); margin-bottom: .75rem; }
-  .exam-q-text { font-family: 'EB Garamond', serif; font-size: 1.05rem; line-height: 1.65; }
-  .exam-q-choices { margin-top: 1rem; }
-  .exam-q-choice {
-    display: flex;
-    align-items: flex-start;
-    gap: .75rem;
-    padding: .6rem .75rem;
-    border-radius: 5px;
-    margin: .4rem 0;
-    cursor: pointer;
-    border: 1px solid rgba(255,255,255,.15);
-    transition: background .15s;
-    font-size: .88rem;
-    line-height: 1.5;
-  }
-  .exam-q-choice:hover { background: rgba(200,146,42,.18); }
-  .exam-q-choice.correct { background: rgba(30,77,43,.6); border-color: #4ade80; }
-  .exam-q-choice.incorrect { background: rgba(123,46,46,.6); border-color: #f87171; }
-  .exam-q-choice .letter { font-weight: 700; color: var(--gold-light); min-width: 1.2rem; }
-  .exam-feedback {
-    margin-top: 1rem;
-    padding: .9rem 1rem;
-    border-radius: 5px;
-    font-size: .85rem;
-    line-height: 1.6;
-    display: none;
-  }
-  .exam-feedback.show { display: block; }
-  .exam-feedback.correct-fb { background: rgba(30,77,43,.5); border: 1px solid #4ade80; color: #bbf7d0; }
-  .exam-feedback.incorrect-fb { background: rgba(123,46,46,.5); border: 1px solid #f87171; color: #fecaca; }
-  .exam-btn {
-    margin-top: 1rem;
-    background: var(--gold);
-    color: var(--navy);
-    border: none;
-    padding: .55rem 1.4rem;
-    border-radius: 4px;
-    font-weight: 700;
-    font-size: .82rem;
-    cursor: pointer;
-    letter-spacing: .04em;
-    text-transform: uppercase;
-  }
-  .exam-btn:hover { background: var(--gold-light); }
-
-  /* ─── TF ACTIVITY ─── */
-  .tf-activity { margin: 1.5rem 0; }
-  .tf-item {
-    background: var(--white);
-    border: 1px solid var(--grey-200);
-    border-radius: 6px;
-    padding: 1rem 1.25rem;
-    margin: .75rem 0;
-  }
-  .tf-statement { font-size: .9rem; margin-bottom: .75rem; font-weight: 500; }
-  .tf-btns { display: flex; gap: .5rem; }
-  .tf-btn {
-    padding: .4rem 1.1rem;
-    border-radius: 4px;
-    border: 1px solid var(--grey-200);
-    font-size: .82rem;
-    font-weight: 600;
-    cursor: pointer;
-    background: var(--white);
-    color: var(--grey-600);
-    transition: all .15s;
-  }
-  .tf-btn:hover { border-color: var(--navy); color: var(--navy); }
-  .tf-btn.selected-t { background: var(--green-soft); color: #fff; border-color: var(--green-soft); }
-  .tf-btn.selected-f { background: var(--red-soft); color: #fff; border-color: var(--red-soft); }
-  .tf-explanation { font-size: .82rem; color: var(--grey-600); margin-top: .6rem; padding: .6rem .75rem; background: var(--grey-100); border-radius: 4px; display: none; font-style: italic; }
-  .tf-explanation.show { display: block; }
-
-  /* ─── READY CHECKLIST ─── */
-  .ready-box {
-    background: var(--gold-pale);
-    border: 1px solid var(--gold-light);
-    border-radius: 6px;
-    padding: 1.25rem 1.5rem;
-    margin: 2rem 0;
-  }
-  .ready-box h3 { color: var(--navy); margin-top: 0; font-size: .95rem; text-transform: uppercase; letter-spacing: .07em; }
-  .ready-box li { margin: .5rem 0 .5rem 1.2rem; font-size: .88rem; }
-
-  /* ─── TABLE OF CONTENTS ─── */
-  .toc { list-style: none; padding: 0; }
-  .toc li { padding: .3rem 0; border-bottom: 1px solid var(--grey-200); font-size: .88rem; }
-  .toc li a { color: var(--navy-light); text-decoration: none; }
-  .toc li a:hover { color: var(--gold); text-decoration: underline; }
-
-  /* ─── MPEP BADGE ─── */
-  .mpep-badge {
-    display: inline-block;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: .72rem;
-    background: var(--navy);
-    color: var(--gold-light);
-    padding: .15rem .5rem;
-    border-radius: 3px;
-    margin-right: .3rem;
-    vertical-align: middle;
-  }
-
-  /* ─── OVERVIEW GRID ─── */
-  .topic-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
-  .topic-card {
-    background: var(--white);
-    border: 1px solid var(--grey-200);
-    border-top: 3px solid var(--navy);
-    border-radius: 6px;
-    padding: 1rem;
-    cursor: pointer;
-    transition: all .2s;
-  }
-  .topic-card:hover { border-top-color: var(--gold); box-shadow: 0 4px 12px rgba(0,0,0,.08); transform: translateY(-2px); }
+  <link rel="stylesheet" href="styles.css">
   .topic-card-num { font-size: .65rem; text-transform: uppercase; letter-spacing: .1em; color: var(--gold); font-weight: 700; }
   .topic-card-title { font-family: 'EB Garamond', serif; font-size: .95rem; font-weight: 600; color: var(--navy); line-height: 1.3; margin-top: .3rem; }
   .topic-card-mpep { font-family: 'JetBrains Mono', monospace; font-size: .68rem; color: var(--grey-400); margin-top: .4rem; }
@@ -399,7 +132,6 @@
     <div class="sidebar-section">
       <div class="sidebar-heading">Resources</div>
       <a href="#" onclick="showPage('sources',this)">Source Materials &amp; References</a>
-      <a href="quiz.html" style="color:var(--gold-light);border-left-color:var(--gold);font-weight:600;">⟶ Practice MCQ Bank</a>
     </div>
   </aside>
 
@@ -1621,7 +1353,78 @@
   </main>
 </div>
 
-  <script src="script.js"></script>
-  </main>
+<script>
+  // ─── NAVIGATION ───
+  function showPage(id, linkEl) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.sidebar a').forEach(a => a.classList.remove('active'));
+    const el = document.getElementById('page-' + id);
+    if (el) el.classList.add('active');
+    if (linkEl) linkEl.classList.add('active');
+    else {
+      document.querySelectorAll('.sidebar a').forEach(a => {
+        if (a.getAttribute('onclick') && a.getAttribute('onclick').includes("'" + id + "'")) {
+          a.classList.add('active');
+        }
+      });
+    }
+    window.scrollTo(0, 0);
+  }
+
+  // ─── MULTIPLE CHOICE QUESTIONS ───
+  const feedbackMessages = {
+    'A': 'Incorrect.',
+    'B': 'Incorrect.',
+    'C': 'Incorrect.',
+    'D': 'Incorrect.',
+    'E': 'Incorrect.'
+  };
+
+  const correctFeedback = {
+    'q1-1': 'Correct. Under 35 U.S.C. §154(a)(2), a utility patent has a term of 20 years from the effective filing date of the earliest U.S. application to which the patent claims priority. Answer C is correct: 20 years from 1 January 2026 = 1 January 2046. The pre-AIA "17 years from grant" term no longer applies to applications filed after 8 June 1995.',
+    'q2-1': 'Correct. The claim recites a natural correlation between thrombin levels and clotting risk (a law of nature) and then instructs a physician to apply conventional medical steps in light of that correlation. Under Mayo and MPEP §2106, additional steps that amount only to well-understood, routine, conventional activity in the relevant field are insufficient to integrate the law of nature into a practical application. Answer B is the most accurate basis for the §101 rejection.',
+    'q3-1': 'Correct. The conference disclosure is prior art under §102(a)(1) — it occurred more than 12 months before A\'s 1 March 2026 filing, so the §102(b)(1) grace period (limited to 1 year before filing) does not excuse it. The third-party publication within the one-year window is also prior art under §102(a)(1): the AIA grace period only protects disclosures made by or derived from the inventor, not independent third-party disclosures. Answer D is correct.',
+    'q4-1': 'Correct. Post-KSR (2007), the USPTO does not require an express teaching, suggestion or motivation in the prior art itself. It is sufficient that the examiner articulates a reason — such as that a POSITA would have combined the references because doing so would yield predictable results. Answer C is correct. The flexibility permitted by KSR means that common sense, design incentives and market forces can also provide the rationale for combination.',
+    'q5-1': 'Correct. Under §112(f), a means-plus-function claim is construed to cover the corresponding structure disclosed in the specification and its equivalents. The equivalents analysis applies the "function-way-result" test: whether the accused device performs substantially the same function in substantially the same way to achieve substantially the same result as the disclosed structure. A thermistor and thermocouple both detect temperature changes (same function), but whether the way and result are substantially the same is a factual question. Answer C is correct.',
+    'q7-1': 'Correct. The doctrine of claim differentiation creates a rebuttable presumption that each claim has a different (and in this case broader) scope. Independent Claim 1 covers compositions with compound A in any amount — including the 10-20% range — because that specific limitation has been expressly placed in dependent Claim 3. The existence of Claim 3 confirms that Claim 1 is not limited to that range. Answer B is correct.',
+    'q8-1': 'Correct. In a CIP application, only claims that find full support in the parent application receive the benefit of the parent\'s filing date. Claims that are supported only by newly added subject matter — such as Claim 10 here — receive only the filing date of the CIP itself, which is 1 June 2025. Answer C is correct. This is a critical distinction in the post-AIA environment because the effective filing date determines which prior art applies.',
+    'q9-1': 'Correct. The 30-month national phase entry deadline is calculated from the earliest claimed priority date. The priority date here is the provisional application filing date of 1 March 2024. 30 months from 1 March 2024 = 1 September 2026. Answer D is correct.',
+    'q10-1': 'Correct. PGR must be filed within 9 months of the date of grant. Since the patent was granted only 5 months ago, the PGR window is still open. PGR is available on all grounds of invalidity including §101 and §103, unlike IPR which is limited to §102 and §103 grounds based on patents and printed publications. Answer B is correct.',
+    'q11-1': 'Correct. Under 37 C.F.R. §1.56, the duty of candour is owed to the USPTO, not to the client. It cannot be overridden by a client\'s instruction. The registered practitioner must disclose material prior art. If the client insists on non-disclosure, the practitioner\'s only ethical option is to withdraw from the representation. Answer D is correct. Proceeding in violation of §1.56 exposes the practitioner to disciplinary proceedings and may render the patent unenforceable.',
+    'q12-1': 'Correct. A PPH request requires that U.S. claims "sufficiently correspond" to the allowed OEE claims — meaning they must be of equal or narrower scope. U.S. claim 1, being broader than the allowed JPO claim 1, does not satisfy this requirement. The applicant must amend U.S. claim 1 to equal or narrower scope before the PPH request will be accepted for that claim. Answer D is correct.'
+  };
+
+  function checkQ(qId, selected, correct) {
+    const container = document.getElementById(qId);
+    const choices = container.querySelectorAll('.exam-q-choice');
+    const fb = document.getElementById(qId + '-fb');
+    const letters = ['A','B','C','D','E'];
+    choices.forEach((c, i) => {
+      c.classList.remove('correct','incorrect');
+      if (letters[i] === correct) c.classList.add('correct');
+      else if (letters[i] === selected && selected !== correct) c.classList.add('incorrect');
+      c.onclick = null;
+    });
+    fb.className = 'exam-feedback show ' + (selected === correct ? 'correct-fb' : 'incorrect-fb');
+    if (selected === correct) {
+      fb.innerHTML = '✓ <strong>Correct.</strong> ' + correctFeedback[qId];
+    } else {
+      fb.innerHTML = '✗ <strong>Incorrect.</strong> The correct answer is <strong>' + correct + '</strong>. ' + correctFeedback[qId];
+    }
+  }
+
+  // ─── TRUE / FALSE ───
+  function checkTF(btn, isTrue, explanation) {
+    const item = btn.closest('.tf-item');
+    const btns = item.querySelectorAll('.tf-btn');
+    const expEl = item.querySelector('.tf-explanation');
+    // Determine if the clicked button represents "True" (first btn) or "False" (second btn)
+    const clickedTrue = btns[0] === btn;
+    btns.forEach(b => { b.classList.remove('selected-t','selected-f'); b.onclick = null; });
+    btn.classList.add(isTrue ? 'selected-t' : 'selected-f');
+    expEl.textContent = explanation;
+    expEl.classList.add('show');
+  }
+</script>
 </body>
 </html>

@@ -9,28 +9,83 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="topbar">
-    <div class="topbar-brand">USPTO Patent Practitioner Examination</div>
-    <div class="topbar-sub">Practice MCQ Bank</div>
-    <nav class="topbar-nav">
-      <a href="index.html">Home</a>
-      <a href="quiz.html" class="active">Practice MCQ</a>
-    </nav>
-  </div>
+  <nav class="topbar">
+    <div>
+      <div class="topbar-brand">USPTO Patent Practitioner Examination</div>
+      <div class="topbar-sub">Practice MCQ — Situational Fact Patterns</div>
+    </div>
+    <div class="topbar-nav">
+      <a href="index.html">← Study Module</a>
+    </div>
+  </nav>
   <div class="layout">
+    <!-- SIDEBAR -->
     <aside class="sidebar">
-      <div class="sidebar-heading">Resources</div>
-      <a class="sidebar-topic" href="index.html">Study Modules</a>
-      <a class="sidebar-topic active" href="quiz.html">Practice MCQ Bank</a>
+      <div class="sidebar-heading">MCQ Topics</div>
+      <div id="sidebar-links"></div>
     </aside>
     <main class="main">
+      <!-- HUB -->
       <div id="screen-hub">
         <div class="hub-header">
-          <div class="hub-meta">Practice</div>
-          <div class="hub-title">MCQ Bank</div>
-          <div class="hub-sub">Test your knowledge of USPTO Patent Bar topics. Select a topic to begin.</div>
+          <div class="hub-meta">Practice Examination</div>
+          <div class="hub-title">Multiple Choice Question Bank</div>
+          <div class="hub-sub">96 situational fact-pattern questions across all 12 examination topics — 8 per topic</div>
         </div>
-        <div id="quiz-app"></div>
+        <div class="hub-stats">
+          <div class="hub-stat"><div class="n">96</div><div class="l">Total Questions</div></div>
+          <div class="hub-stat"><div class="n">12</div><div class="l">Topics</div></div>
+          <div class="hub-stat"><div class="n" id="stat-attempted">0</div><div class="l">Topics Attempted</div></div>
+          <div class="hub-stat"><div class="n" id="stat-best">—</div><div class="l">Best Score</div></div>
+        </div>
+        <div style="margin:1.5rem 0 .5rem;font-family:'EB Garamond',serif;font-size:1.35rem;color:var(--navy);border-bottom:1px solid var(--grey-200);padding-bottom:.4rem;">Select a Topic</div>
+        <p style="font-size:.875rem;color:var(--grey-600);margin-bottom:1rem;">Each quiz presents 8 situational fact patterns in exam format. Select your answer and submit to receive MPEP-anchored feedback. Aim for 7/8 (≥88%) before moving to the next topic.</p>
+        <div class="topic-grid" id="hub-grid"></div>
+      </div>
+      <!-- QUIZ -->
+      <div id="screen-quiz" style="display:none;">
+        <div class="quiz-header">
+          <div class="quiz-meta" id="quiz-meta-label"></div>
+          <div class="quiz-title" id="quiz-title-label"></div>
+        </div>
+        <div class="progress-row">
+          <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+          <div class="progress-label" id="progress-label"></div>
+        </div>
+        <div class="q-card">
+          <div class="q-top">
+            <div class="q-label" id="q-num-label"></div>
+            <div class="q-mpep" id="q-mpep-ref"></div>
+          </div>
+          <div class="q-scenario" id="q-scenario" style="display:none;"></div>
+          <div class="q-stem" id="q-stem"></div>
+          <div class="choices" id="q-choices"></div>
+          <div class="q-actions">
+            <button class="btn-submit" id="btn-submit" onclick="submitAnswer()" disabled>Submit Answer</button>
+            <button class="btn-next" id="btn-next" onclick="nextQuestion()" style="display:none;">Next Question →</button>
+            <button class="btn-finish" id="btn-finish" onclick="showResults()" style="display:none;">View Results</button>
+          </div>
+          <div class="explanation" id="q-explanation"></div>
+        </div>
+      </div>
+      <!-- RESULTS -->
+      <div id="screen-results" style="display:none;">
+        <div class="quiz-header">
+          <div class="quiz-meta" id="res-meta-label"></div>
+          <div class="quiz-title" id="res-title-label"></div>
+        </div>
+        <div class="results-card">
+          <div class="results-score" id="res-score"></div>
+          <div class="results-fraction" id="res-fraction"></div>
+          <div class="results-verdict" id="res-verdict"></div>
+          <div class="results-mpep" id="res-mpep"></div>
+        </div>
+        <div style="font-family:'EB Garamond',serif;font-size:1.2rem;color:var(--navy);margin:1.5rem 0 .5rem;border-bottom:1px solid var(--grey-200);padding-bottom:.4rem;">Question Review</div>
+        <div class="review-list" id="review-list"></div>
+        <div class="results-actions">
+          <button class="btn-retry" onclick="retryTopic()">Retry This Topic</button>
+          <button class="btn-hub" onclick="goHub()">← All Topics</button>
+        </div>
       </div>
     </main>
   </div>

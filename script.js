@@ -288,22 +288,6 @@ function show(id) {
 
 window.addEventListener('DOMContentLoaded', init);
 
-// ═══════════════════════════════════════════════════════
-//  QUESTION BANK
-// ═══════════════════════════════════════════════════════
-
-const TOPICS = [
-  // ...existing code from quiz.html (TOPICS array and all questions)
-];
-
-// ═══════════════════════════════════════════════════════
-//  STATE
-// ═══════════════════════════════════════════════════════
-let scores = {}; // { topicId: { score, total, answers: [{selected, correct}] } }
-let currentTopic = null;
-let currentQ = 0;
-let selectedChoice = null;
-
 function selectChoice(idx) {
   if (answered) return;
   selectedChoice = idx;
